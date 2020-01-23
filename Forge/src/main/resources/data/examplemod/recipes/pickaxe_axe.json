@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"III",
+		"ISN",
+		" S "
+	],
+	
+	"key":
+	{
+		"I": { "tag": "forge:ingots/hallowed" },
+		"S": { "item": "minecraft:stick" },
+		"N": { "item": "minecraft:nether_star" }	
+	},
+	
+	"result": { "item": "examplemod:pickaxe_axe" }
+}

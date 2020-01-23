@@ -1,0 +1,46 @@
+modLoader="javafml" #mandatory
+
+loaderVersion="[31,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+
+issueTrackerURL="http://my.issue.tracker/" #optional
+
+[[mods]] #mandatory
+
+modId="examplemod" #mandatory
+
+version="INDEV-1" #mandatory
+ 
+displayName="Donut's Mod" #mandatory
+
+#updateJSONURL="http://myurl.me/" #optional
+
+#displayURL="http://example.com/" #optional
+
+#logoFile="examplemod.png" #optional
+
+#credits="" #optional
+
+authors="Rhys Holloway" #optional
+
+description='''
+Terraria-based items
+'''
+
+[[dependencies.examplemod]] #optional
+    
+    modId="forge" #mandatory
+    
+    mandatory=true #mandatory
+    
+    versionRange="[31,)" #mandatory
+    
+    ordering="NONE"
+    
+    side="BOTH"
+
+[[dependencies.examplemod]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15.2]"
+    ordering="NONE"
+    side="BOTH"
