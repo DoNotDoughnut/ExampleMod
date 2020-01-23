@@ -46,42 +46,44 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 public class ExampleModItems {
-	
-	@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+
+	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 	public static class RegistryEvents {
-		
-	
-	@SubscribeEvent
-	public static void registerItems(final RegistryEvent.Register<Item> event)
-	{
-		event.getRegistry().registerAll (
-				
-				hallowed_bar = new ExampleModItem("hallowed_bar"),
-				excalibur = new Excalibur(MaterialTiers.hallowed, 5, -2.4f),
-				pickaxe_axe = new PickaxeAxe(MaterialTiers.hallowed, 3, -2.8f),
-				hallowed_helmet = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD).setRegistryName("hallowed_helmet"),
-				hallowed_mask = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD).setRegistryName("hallowed_mask"),
-				hallowed_headgear = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD).setRegistryName("hallowed_headgear"),
-				hallowed_chestplate = new ArmorHallowed(hallowed, EquipmentSlotType.CHEST).setRegistryName("hallowed_chestplate"),
-				hallowed_leggings = new ArmorHallowed(hallowed, EquipmentSlotType.LEGS).setRegistryName("hallowed_leggings"),
-				hallowed_boots = new ArmorHallowed(hallowed, EquipmentSlotType.FEET).setRegistryName("hallowed_boots")
-		);
-		
-		ExampleModMain.logger.info(ExampleModMain.NAME+": Items registered.");
-	}
-	
+
+		@SubscribeEvent
+		public static void registerItems(final RegistryEvent.Register<Item> event) {
+			event.getRegistry().registerAll(
+
+					hallowed_bar = new ExampleModItem("hallowed_bar"),
+					excalibur = new Excalibur(MaterialTiers.hallowed, 5, -2.4f),
+					pickaxe_axe = new PickaxeAxe(MaterialTiers.hallowed, 3, -2.8f),
+					hallowed_helmet = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD)
+							.setRegistryName("hallowed_helmet"),
+					hallowed_mask = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD)
+							.setRegistryName("hallowed_mask"),
+					hallowed_headgear = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD)
+							.setRegistryName("hallowed_headgear"),
+					hallowed_chestplate = new ArmorHallowed(hallowed, EquipmentSlotType.CHEST)
+							.setRegistryName("hallowed_chestplate"),
+					hallowed_leggings = new ArmorHallowed(hallowed, EquipmentSlotType.LEGS)
+							.setRegistryName("hallowed_leggings"),
+					hallowed_boots = new ArmorHallowed(hallowed, EquipmentSlotType.FEET)
+							.setRegistryName("hallowed_boots"));
+
+			ExampleModMain.logger.info(ExampleModMain.NAME + ": Items registered.");
+		}
+
 	}
 
 }
 
-
 class ExampleModItem extends Item {
-	
+
 	public ExampleModItem(String registryName) {
 		super(new Item.Properties().group(ExampleModMain.group));
 		this.setRegistryName(ExampleModMain.MOD_ID, registryName);
 	}
-	
+
 }
 
 class ArmorHallowed extends ArmorItem {
@@ -91,17 +93,15 @@ class ArmorHallowed extends ArmorItem {
 	}
 
 	@Override
-	public boolean isBookEnchantable(ItemStack stack, ItemStack book)
-	{
+	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
 		return true;
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-	{
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == hallowed_bar;
 	}
-	
+
 }
 
 class Excalibur extends SwordItem {
@@ -110,12 +110,12 @@ class Excalibur extends SwordItem {
 		super(tier, attackDamageIn, attackSpeedIn, new Item.Properties().group(ExampleModMain.group));
 		setRegistryName(ExampleModMain.MOD_ID, "excalibur");
 	}
-	
+
 	@Override
 	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
 		return true;
 	}
-	
+
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == hallowed_bar;
@@ -143,22 +143,18 @@ class PickaxeAxe extends ToolItem {
 			Blocks.CARVED_PUMPKIN, Blocks.JACK_O_LANTERN, Blocks.MELON, Blocks.LADDER, Blocks.OAK_BUTTON,
 			Blocks.SPRUCE_BUTTON, Blocks.BIRCH_BUTTON, Blocks.JUNGLE_BUTTON, Blocks.DARK_OAK_BUTTON,
 			Blocks.ACACIA_BUTTON, Blocks.OAK_PRESSURE_PLATE, Blocks.SPRUCE_PRESSURE_PLATE, Blocks.BIRCH_PRESSURE_PLATE,
-			Blocks.JUNGLE_PRESSURE_PLATE, Blocks.DARK_OAK_PRESSURE_PLATE, Blocks.ACACIA_PRESSURE_PLATE, Blocks.BAMBOO, Blocks.CACTUS, Blocks.MELON, Blocks.PUMPKIN);
-	
-	public static final Map<Block, Block> BLOCK_STRIPPING_MAP = (new Builder<Block, Block>()).put(Blocks.OAK_WOOD, 
-			Blocks.STRIPPED_OAK_WOOD).put(Blocks.OAK_LOG, 
-			Blocks.STRIPPED_OAK_LOG).put(Blocks.DARK_OAK_WOOD, 
-			Blocks.STRIPPED_DARK_OAK_WOOD).put(Blocks.DARK_OAK_LOG, 
-			Blocks.STRIPPED_DARK_OAK_LOG).put(Blocks.ACACIA_WOOD, 
-			Blocks.STRIPPED_ACACIA_WOOD).put(Blocks.ACACIA_LOG, 
-			Blocks.STRIPPED_ACACIA_LOG).put(Blocks.BIRCH_WOOD, 
-			Blocks.STRIPPED_BIRCH_WOOD).put(Blocks.BIRCH_LOG, 
-			Blocks.STRIPPED_BIRCH_LOG).put(Blocks.JUNGLE_WOOD, 
-			Blocks.STRIPPED_JUNGLE_WOOD).put(Blocks.JUNGLE_LOG, 
-			Blocks.STRIPPED_JUNGLE_LOG).put(Blocks.SPRUCE_WOOD, 
-			Blocks.STRIPPED_SPRUCE_WOOD).put(Blocks.SPRUCE_LOG, 
-			Blocks.STRIPPED_SPRUCE_LOG).build();
-	
+			Blocks.JUNGLE_PRESSURE_PLATE, Blocks.DARK_OAK_PRESSURE_PLATE, Blocks.ACACIA_PRESSURE_PLATE, Blocks.BAMBOO,
+			Blocks.CACTUS, Blocks.MELON, Blocks.PUMPKIN);
+
+	public static final Map<Block, Block> BLOCK_STRIPPING_MAP = (new Builder<Block, Block>())
+			.put(Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD).put(Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG)
+			.put(Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD)
+			.put(Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG).put(Blocks.ACACIA_WOOD, Blocks.STRIPPED_ACACIA_WOOD)
+			.put(Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG).put(Blocks.BIRCH_WOOD, Blocks.STRIPPED_BIRCH_WOOD)
+			.put(Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG).put(Blocks.JUNGLE_WOOD, Blocks.STRIPPED_JUNGLE_WOOD)
+			.put(Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG).put(Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD)
+			.put(Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG).build();
+
 	public PickaxeAxe(IItemTier tier, float attackDamageIn, float attackSpeedIn) {
 		super(attackDamageIn, attackSpeedIn, tier, EFFECTIVE_ON, new Item.Properties().group(ExampleModMain.group));
 		setRegistryName(ExampleModMain.MOD_ID, "pickaxe_axe");
@@ -172,70 +168,60 @@ class PickaxeAxe extends ToolItem {
 	public float getDestroySpeed(ItemStack stack, BlockState state) {
 		Material material = state.getMaterial();
 		return material != Material.IRON && material != Material.ANVIL && material != Material.ROCK
-				&& material != Material.WOOD ? super.getDestroySpeed(stack, state)
-						: this.efficiency;
+				&& material != Material.WOOD ? super.getDestroySpeed(stack, state) : this.efficiency;
 	}
-	
+
 	@Nonnull
-    @Override
-    public ActionResultType onItemUse(ItemUseContext context)
-    {
-        World world = context.getWorld();
-        BlockPos blockpos = context.getPos();
-        PlayerEntity player = context.getPlayer();
-        BlockState blockstate = world.getBlockState(blockpos);
-        BlockState resultToSet = null;
-        Block strippedResult = BLOCK_STRIPPING_MAP.get(blockstate.getBlock());
-        
-        if (strippedResult != null)
-        {
-            world.playSound(player, blockpos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            resultToSet = strippedResult.getDefaultState().with(RotatedPillarBlock.AXIS, blockstate.get(RotatedPillarBlock.AXIS));
-        }
-        else
-        {
-            if (context.getFace() == Direction.DOWN)
-                return ActionResultType.PASS;
-            
-            else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.get(CampfireBlock.LIT))
-            {
-                world.playEvent(null, WorldEvents.FIRE_EXTINGUISH_SOUND, blockpos, 0);
-                resultToSet = blockstate.with(CampfireBlock.LIT, false);
-            }
-        }
-        
-        if (resultToSet == null)
-            return ActionResultType.PASS;
-        
-        if (!world.isRemote) {
-            world.setBlockState(blockpos, resultToSet, 11);
-            
-            if (player != null)
-                context.getItem().damageItem(1, player, onBroken -> onBroken.sendBreakAnimation(context.getHand()));
-        }
-        
-        return ActionResultType.SUCCESS;
-    }
-	
 	@Override
-	public boolean isBookEnchantable(ItemStack stack, ItemStack book)
-	{
+	public ActionResultType onItemUse(ItemUseContext context) {
+		World world = context.getWorld();
+		BlockPos blockpos = context.getPos();
+		PlayerEntity player = context.getPlayer();
+		BlockState blockstate = world.getBlockState(blockpos);
+		BlockState resultToSet = null;
+		Block strippedResult = BLOCK_STRIPPING_MAP.get(blockstate.getBlock());
+
+		if (strippedResult != null) {
+			world.playSound(player, blockpos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			resultToSet = strippedResult.getDefaultState().with(RotatedPillarBlock.AXIS,
+					blockstate.get(RotatedPillarBlock.AXIS));
+		} else {
+			if (context.getFace() == Direction.DOWN)
+				return ActionResultType.PASS;
+
+			else if (blockstate.getBlock() instanceof CampfireBlock && blockstate.get(CampfireBlock.LIT)) {
+				world.playEvent(null, WorldEvents.FIRE_EXTINGUISH_SOUND, blockpos, 0);
+				resultToSet = blockstate.with(CampfireBlock.LIT, false);
+			}
+		}
+
+		if (resultToSet == null)
+			return ActionResultType.PASS;
+
+		if (!world.isRemote) {
+			world.setBlockState(blockpos, resultToSet, 11);
+
+			if (player != null)
+				context.getItem().damageItem(1, player, onBroken -> onBroken.sendBreakAnimation(context.getHand()));
+		}
+
+		return ActionResultType.SUCCESS;
+	}
+
+	@Override
+	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
 		return true;
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
-	{
+	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
 		return repair.getItem() == hallowed_bar;
 	}
-	
+
 	@Override
-	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag)
-	{
-		super.addInformation(stack, world, list, flag);				
+	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
+		super.addInformation(stack, world, list, flag);
 		list.add(new StringTextComponent("\\u00A7o\\u00A79Not to be confused with a hamdrill"));
-	} 
-	
+	}
 
 }
-

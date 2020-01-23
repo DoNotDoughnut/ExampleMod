@@ -1,8 +1,8 @@
 package com.github.donotdoughnut.examplemod.blocks;
 
-import static com.github.donotdoughnut.examplemod.blocks.ExampleModBlockList.*;
-import static net.minecraft.block.SoundType.*;
-import static net.minecraft.block.material.Material.*;
+import static com.github.donotdoughnut.examplemod.blocks.ExampleModBlockList.hallowed_block;
+import static net.minecraft.block.SoundType.METAL;
+import static net.minecraft.block.material.Material.IRON;
 
 import com.github.donotdoughnut.examplemod.ExampleModMain;
 
@@ -25,9 +25,14 @@ public class ExampleModBlocks {
 					hallowed_block = new ExampleModBlock(IRON, METAL, "hallowed_block")
 					
 			);
-
-			ExampleModMain.logger.info(ExampleModMain.NAME + ": Blocks registered.");
 		}
+		
+		@SubscribeEvent
+	    public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent)
+	    {
+
+	    	ExampleModMain.logger.info(": Blocks registered");
+	    }
 
 	}
 
@@ -37,7 +42,7 @@ class ExampleModBlock extends Block {
 
 	public ExampleModBlock(Material mat, SoundType walkSound, String registryName) {
 		super(Block.Properties.create(mat).hardnessAndResistance(3.0f, 3.0f).lightValue(1).sound(walkSound));
-		setRegistryName(ExampleModMain.MOD_ID, registryName);
+		this.setRegistryName(ExampleModMain.MOD_ID, registryName);
 	}
 
 }
