@@ -1,5 +1,5 @@
 {
-	"item.examplemod.hallowed_bar": "\u00A7cHallowed Ingot",
+	"item.examplemod.hallowed_bar": "\u00A7cHallowed Bar",
 	"item.examplemod.excalibur": "\u00A7dExcalibur",
 	"item.examplemod.pickaxe_axe": "\u00A7cPickaxe Axe",
 	
@@ -9,6 +9,8 @@
 	"item.examplemod.hallowed_chestplate": "\u00A7dHallowed Plate Mail",
 	"item.examplemod.hallowed_leggings": "\u00A7dHallowed Leggings",
 	"item.examplemod.hallowed_boots": "\u00A7dHallowed Boots",
+	
+	"item.examplemod.hallowed_block": "\u00A7dHallowed Bar Block",
 	
 	"itemGroup.examplemod": "Terraria"
 }
