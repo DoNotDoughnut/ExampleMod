@@ -3,6 +3,13 @@
 	"item.examplemod.excalibur": "\u00A7dExcalibur",
 	"item.examplemod.pickaxe_axe": "\u00A7cPickaxe Axe",
 	
+	"item.examplemod.hallowed_headgear": "\u00A7dHallowed Headgear",
+	"item.examplemod.hallowed_mask": "\u00A7dHallowed Mask",
+	"item.examplemod.hallowed_helmet': "\u00A7dHallowed Helmet",
+	"item.examplemod.hallowed_chestplate": "\u00A7dHallowed Plate Mail",
+	"item.examplemod.hallowed_leggings": "\u00A7dHallowed Leggings",
+	"item.examplemod.hallowed_boots": "\u00A7dHallowed Boots",
+	
 	"itemGroup.Donut Mod": "Terraria"
 
 }
