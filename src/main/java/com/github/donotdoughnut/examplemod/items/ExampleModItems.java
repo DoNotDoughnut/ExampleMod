@@ -28,6 +28,8 @@ public class ExampleModItems {
 				excalibur = new Excalibur(MaterialTiers.hallowed, 5, -2.4f),
 				pickaxe_axe = new PickaxeAxe(MaterialTiers.hallowed, 3, -2.8f),
 				hallowed_helmet = new ArmorHallowed(ArmorMaterialLists.hallowed, EquipmentSlotType.HEAD).setRegistryName("hallowed_helmet"),
+				hallowed_mask = new ArmorHallowed(ArmorMaterialLists.hallowed, EquipmentSlotType.HEAD).setRegistryName("hallowed_mask"),
+				hallowed_headgear = new ArmorHallowed(ArmorMaterialLists.hallowed, EquipmentSlotType.HEAD).setRegistryName("hallowed_headgear"),
 				hallowed_chestplate = new ArmorHallowed(ArmorMaterialLists.hallowed, EquipmentSlotType.CHEST).setRegistryName("hallowed_chestplate"),
 				hallowed_leggings = new ArmorHallowed(ArmorMaterialLists.hallowed, EquipmentSlotType.LEGS).setRegistryName("hallowed_leggings"),
 				hallowed_boots = new ArmorHallowed(ArmorMaterialLists.hallowed, EquipmentSlotType.FEET).setRegistryName("hallowed_boots")
@@ -43,6 +45,8 @@ public class ExampleModItems {
 	excalibur, 
 	pickaxe_axe,
 	hallowed_helmet,
+	hallowed_mask,
+	hallowed_headgear,
 	hallowed_chestplate,
 	hallowed_leggings,
 	hallowed_boots,
