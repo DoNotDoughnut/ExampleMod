@@ -3,7 +3,7 @@ package com.github.donotdoughnut.examplemod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.github.donotdoughnut.examplemod.items.ExampleModItems;
+import com.github.donotdoughnut.examplemod.items.ExampleModItemList;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -18,12 +18,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(ExampleModMain.MOD_ID)
 public class ExampleModMain {
 
-	public static final String NAME = "Donut Mod", 
+	public static final String NAME = "Example Mod", 
 							   MOD_ID = "examplemod";
 	
 	public static final Logger logger = LogManager.getLogger(MOD_ID);
 	
-	public static final ItemGroup group = new DonutCreativeTab();
+	public static final ItemGroup group = new ExampleModCreativeTab();
 	
 	public ExampleModMain() {
 	
@@ -51,15 +51,15 @@ public class ExampleModMain {
 	
 }
 
-class DonutCreativeTab extends ItemGroup {
+class ExampleModCreativeTab extends ItemGroup {
 
-	public DonutCreativeTab() {
-		super(ExampleModMain.NAME);
+	public ExampleModCreativeTab() {
+		super(ExampleModMain.MOD_ID);
 	}
 
 	@Override
 	public ItemStack createIcon() {
-		return new ItemStack(ExampleModItems.hallowed_bar);
+		return new ItemStack(ExampleModItemList.hallowed_bar);
 	}
 
 }

@@ -10,7 +10,7 @@ modId="examplemod" #mandatory
 
 version="INDEV-1" #mandatory
  
-displayName="Donut's Mod" #mandatory
+displayName="Example Mod" #mandatory
 
 #updateJSONURL="http://myurl.me/" #optional
 

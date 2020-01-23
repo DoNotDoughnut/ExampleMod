@@ -1,6 +1,6 @@
 package com.github.donotdoughnut.examplemod.items.materials;
 
-import com.github.donotdoughnut.examplemod.items.ExampleModItems;
+import static com.github.donotdoughnut.examplemod.items.ExampleModItemList.hallowed_bar;
 
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
@@ -10,7 +10,7 @@ public enum MaterialTiers implements IItemTier {
 	
 	//Harvest l
 	
-	hallowed(3, 576, 9F, 3.5F, 13, ExampleModItems.hallowed_bar);
+	hallowed(3, 576, 9F, 3.5F, 13, hallowed_bar);
 	
 	private Item repairMaterial;
 	private int enchantability, harvestLevel, durability;

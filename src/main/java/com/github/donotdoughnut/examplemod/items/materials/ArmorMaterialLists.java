@@ -1,7 +1,7 @@
 package com.github.donotdoughnut.examplemod.items.materials;
 
 import com.github.donotdoughnut.examplemod.ExampleModMain;
-import com.github.donotdoughnut.examplemod.items.ExampleModItems;
+import static com.github.donotdoughnut.examplemod.items.ExampleModItemList.hallowed_bar;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
@@ -12,7 +12,7 @@ import net.minecraft.util.SoundEvent;
 
 public enum ArmorMaterialLists implements IArmorMaterial {
 	
-	hallowed("armor_hallowed", 19, new int[] {3, 6, 7, 3}, 15, ExampleModItems.hallowed_bar, "item.armor.equip_generic", 1.0f);	
+	hallowed("armor_hallowed", 19, new int[] {3, 6, 7, 3}, 15, hallowed_bar, "item.armor.equip_generic", 1.0f);	
 	
 	private static final int[] max_damage_array = new int[] {13, 15, 16, 11};
 	private String name, equipSound;
