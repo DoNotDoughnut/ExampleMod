@@ -37,7 +37,7 @@ class ExampleModBlock extends Block {
 
 	public ExampleModBlock(Material mat, SoundType walkSound, String registryName) {
 		super(Block.Properties.create(mat).hardnessAndResistance(3.0f, 3.0f).lightValue(1).sound(walkSound));
-		setRegistryName(ExampleModMain.MOD_ID, "bronze_block");
+		setRegistryName(ExampleModMain.MOD_ID, registryName);
 	}
 
 }
