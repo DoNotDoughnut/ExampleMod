@@ -8,7 +8,7 @@ import net.minecraft.item.crafting.Ingredient;
 
 public enum MaterialTiers implements IItemTier {
 	
-	//Harvest l
+	// Harvest Level, Durability, Efficiency, Attack Damage, Enchantability, Repair Material
 	
 	hallowed(3, 576, 9F, 3.5F, 13, hallowed_bar);
 	
