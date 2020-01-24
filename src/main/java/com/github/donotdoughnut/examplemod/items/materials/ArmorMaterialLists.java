@@ -1,6 +1,5 @@
 package com.github.donotdoughnut.examplemod.items.materials;
 
-import com.github.donotdoughnut.examplemod.ExampleModMain;
 import static com.github.donotdoughnut.examplemod.items.ExampleModItemList.hallowed_ingot;
 
 import net.minecraft.inventory.EquipmentSlotType;
