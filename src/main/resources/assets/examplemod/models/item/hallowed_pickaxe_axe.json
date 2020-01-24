@@ -1,6 +1,6 @@
 {
    "parent": "item/handheld",
    "textures": {
-       "layer0": "examplemod:item/pickaxe_axe"
+       "layer0": "examplemod:item/hallowed_pickaxe_axe"
    }
 } 

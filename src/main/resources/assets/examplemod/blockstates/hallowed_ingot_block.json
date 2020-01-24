@@ -1,0 +1,6 @@
+{
+    "variants": 
+    {
+        "": { "model": "examplemod:block/hallowed_ingot_block" }
+    }
+}

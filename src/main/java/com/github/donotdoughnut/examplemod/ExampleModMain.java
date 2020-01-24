@@ -23,7 +23,7 @@ public class ExampleModMain {
 	
 	public static final Logger logger = LogManager.getLogger(MOD_ID);
 	
-	public static final ItemGroup group = new ExampleModCreativeTab();
+	public static final ItemGroup GROUP = new ExampleModCreativeTab();
 	
 	public ExampleModMain() {
 	
@@ -59,7 +59,7 @@ class ExampleModCreativeTab extends ItemGroup {
 
 	@Override
 	public ItemStack createIcon() {
-		return new ItemStack(ExampleModItemList.hallowed_bar);
+		return new ItemStack(ExampleModItemList.hallowed_ingot);
 	}
 
 }

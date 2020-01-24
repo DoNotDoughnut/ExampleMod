@@ -1,8 +1,8 @@
 package com.github.donotdoughnut.examplemod.blocks;
 
-import static com.github.donotdoughnut.examplemod.blocks.ExampleModBlockList.hallowed_block;
-import static net.minecraft.block.SoundType.METAL;
-import static net.minecraft.block.material.Material.IRON;
+import static com.github.donotdoughnut.examplemod.blocks.ExampleModBlockList.*;
+import static net.minecraft.block.SoundType.*;
+import static net.minecraft.block.material.Material.*;
 
 import com.github.donotdoughnut.examplemod.ExampleModMain;
 
@@ -19,10 +19,13 @@ public class ExampleModBlocks {
 	public static class RegistryEvents {
 
 		@SubscribeEvent
-		public static void registerBlocks(final RegistryEvent.Register<Block> event) {
+		public static void registerBlocks(RegistryEvent.Register<Block> event) {
+			
+			// DONT FORGET TO CREATE BLOCKITEM WHEN REGISTERING BLOCKS
+			
 			event.getRegistry().registerAll(
 
-					hallowed_block = new ExampleModBlock(IRON, METAL, "hallowed_block")
+					hallowed_block = new ExampleModBlock(IRON, METAL, "hallowed_ingot_block")
 					
 			);
 		}

@@ -3,16 +3,16 @@
 	
 	"pattern":
 	[
-		" I ",
-		" I ",
-		" S "
+		"III",
+		"IPI",
+		"   "
 	],
 	
 	"key":
 	{
 		"I": { "tag": "forge:ingots/hallowed" },
-		"S": { "item": "minecraft:stick" }
+		"P": { "tag": "minecraft:potion" }
 	},
 	
-	"result": { "item": "examplemod:excalibur" }
+	"result": { "item": "examplemod:hallowed_block" }
 }

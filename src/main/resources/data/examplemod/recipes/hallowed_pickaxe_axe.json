@@ -15,5 +15,5 @@
 		"N": { "item": "minecraft:nether_star" }	
 	},
 	
-	"result": { "item": "examplemod:pickaxe_axe" }
+	"result": { "item": "examplemod:hallowed_pickaxe_axe" }
 }

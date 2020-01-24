@@ -1,7 +1,9 @@
 package com.github.donotdoughnut.examplemod.items;
 
-import static com.github.donotdoughnut.examplemod.items.materials.ArmorMaterialLists.*;
 import static com.github.donotdoughnut.examplemod.items.ExampleModItemList.*;
+import static com.github.donotdoughnut.examplemod.items.materials.ArmorMaterialLists.*;
+import static com.github.donotdoughnut.examplemod.blocks.ExampleModBlockList.*;
+import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
 
 import java.util.List;
 import java.util.Map;
@@ -9,11 +11,9 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
-import com.github.donotdoughnut.examplemod.ExampleModMain;
-
 import com.github.donotdoughnut.examplemod.items.materials.MaterialTiers;
-import com.google.common.collect.Sets;
 import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Sets;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -25,6 +25,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
@@ -39,6 +40,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.WorldEvents;
 import net.minecraftforge.event.RegistryEvent;
@@ -51,45 +53,54 @@ public class ExampleModItems {
 	public static class RegistryEvents {
 
 		@SubscribeEvent
-		public static void registerItems(final RegistryEvent.Register<Item> event) {
+		public static void registerItems(RegistryEvent.Register<Item> event) {
 			event.getRegistry().registerAll(
 
-					hallowed_bar = new ExampleModItem("hallowed_bar"),
-					excalibur = new Excalibur(MaterialTiers.hallowed, 5, -2.4f),
-					pickaxe_axe = new PickaxeAxe(MaterialTiers.hallowed, 3, -2.8f),
-					hallowed_helmet = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD)
-							.setRegistryName("hallowed_helmet"),
-					hallowed_mask = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD)
-							.setRegistryName("hallowed_mask"),
-					hallowed_headgear = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD)
-							.setRegistryName("hallowed_headgear"),
-					hallowed_chestplate = new ArmorHallowed(hallowed, EquipmentSlotType.CHEST)
-							.setRegistryName("hallowed_chestplate"),
-					hallowed_leggings = new ArmorHallowed(hallowed, EquipmentSlotType.LEGS)
-							.setRegistryName("hallowed_leggings"),
-					hallowed_boots = new ArmorHallowed(hallowed, EquipmentSlotType.FEET)
-							.setRegistryName("hallowed_boots"));
+					hallowed_ingot = new ExampleModItem("hallowed_ingot"),
+					hallowed_sword = new Excalibur(MaterialTiers.hallowed, 5, -2.4f, "hallowed_sword"),
+					hallowed_pickaxe_axe = new PickaxeAxe(MaterialTiers.hallowed, 3, -2.8f, "hallowed_pickaxe_axe"),
+					hallowed_helmet = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD, "hallowed_helmet"),
+					hallowed_mask = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD, "hallowed_mask"),
+					hallowed_headgear = new ArmorHallowed(hallowed, EquipmentSlotType.HEAD, "hallowed_headgear"),
+					hallowed_chestplate = new ArmorHallowed(hallowed, EquipmentSlotType.CHEST, "hallowed_chestplate"),
+					hallowed_leggings = new ArmorHallowed(hallowed, EquipmentSlotType.LEGS, "hallowed_leggings"),
+					hallowed_boots = new ArmorHallowed(hallowed, EquipmentSlotType.FEET, "hallowed_boots"),
+					hallowed_ingot_block_item = new ExampleModBlockItem(hallowed_block, "hallowed_ingot_block")
+					
+					);
 
-			ExampleModMain.logger.info(ExampleModMain.NAME + ": Items registered.");
+			logger.info(NAME + ": Items registered.");
 		}
 
 	}
 
 }
 
+
+
 class ExampleModItem extends Item {
 
 	public ExampleModItem(String registryName) {
-		super(new Item.Properties().group(ExampleModMain.group));
-		this.setRegistryName(ExampleModMain.MOD_ID, registryName);
+		super(new Item.Properties().group(GROUP));
+		this.setRegistryName(MOD_ID, registryName);
+	}
+
+}
+
+class ExampleModBlockItem extends BlockItem {
+
+	public ExampleModBlockItem(Block block, String registryName) {
+		super(block, new Item.Properties().group(GROUP));
+		this.setRegistryName(MOD_ID, registryName);
 	}
 
 }
 
 class ArmorHallowed extends ArmorItem {
 
-	public ArmorHallowed(IArmorMaterial material, EquipmentSlotType slot) {
-		super(material, slot, new Item.Properties().group(ExampleModMain.group));
+	public ArmorHallowed(IArmorMaterial material, EquipmentSlotType slot, String regName) {
+		super(material, slot, new Item.Properties().group(GROUP));
+		this.setRegistryName(MOD_ID, regName);
 	}
 
 	@Override
@@ -99,16 +110,16 @@ class ArmorHallowed extends ArmorItem {
 
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return repair.getItem() == hallowed_bar;
+		return repair.getItem() == hallowed_ingot;
 	}
 
 }
 
 class Excalibur extends SwordItem {
 
-	public Excalibur(IItemTier tier, int attackDamageIn, float attackSpeedIn) {
-		super(tier, attackDamageIn, attackSpeedIn, new Item.Properties().group(ExampleModMain.group));
-		setRegistryName(ExampleModMain.MOD_ID, "excalibur");
+	public Excalibur(IItemTier tier, int attackDamageIn, float attackSpeedIn, String regName) {
+		super(tier, attackDamageIn, attackSpeedIn, new Item.Properties().group(GROUP));
+		setRegistryName(MOD_ID, regName);
 	}
 
 	@Override
@@ -118,7 +129,7 @@ class Excalibur extends SwordItem {
 
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return repair.getItem() == hallowed_bar;
+		return repair.getItem() == hallowed_ingot;
 	}
 
 }
@@ -155,9 +166,9 @@ class PickaxeAxe extends ToolItem {
 			.put(Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG).put(Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD)
 			.put(Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG).build();
 
-	public PickaxeAxe(IItemTier tier, float attackDamageIn, float attackSpeedIn) {
-		super(attackDamageIn, attackSpeedIn, tier, EFFECTIVE_ON, new Item.Properties().group(ExampleModMain.group));
-		setRegistryName(ExampleModMain.MOD_ID, "pickaxe_axe");
+	public PickaxeAxe(IItemTier tier, float attackDamageIn, float attackSpeedIn, String regName) {
+		super(attackDamageIn, attackSpeedIn, tier, EFFECTIVE_ON, new Item.Properties().group(GROUP));
+		setRegistryName(MOD_ID, regName);
 	}
 
 	public boolean canHarvestBlock(BlockState blockIn) {
@@ -215,13 +226,13 @@ class PickaxeAxe extends ToolItem {
 
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return repair.getItem() == hallowed_bar;
+		return repair.getItem() == hallowed_ingot;
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
 		super.addInformation(stack, world, list, flag);
-		list.add(new StringTextComponent("\\u00A7o\\u00A79Not to be confused with a hamdrill"));
+		list.add(new StringTextComponent(TextFormatting.ITALIC + "" + TextFormatting.BLUE + "Not to be confused with a hamdrill"));
 	}
 
 }

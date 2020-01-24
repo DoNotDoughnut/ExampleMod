@@ -1,7 +1,7 @@
 package com.github.donotdoughnut.examplemod.items.materials;
 
 import com.github.donotdoughnut.examplemod.ExampleModMain;
-import static com.github.donotdoughnut.examplemod.items.ExampleModItemList.hallowed_bar;
+import static com.github.donotdoughnut.examplemod.items.ExampleModItemList.hallowed_ingot;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
@@ -14,7 +14,7 @@ public enum ArmorMaterialLists implements IArmorMaterial {
 	
 	// Name, Durability (Is scaled later), Toughness, Enchantability, Damage Reduction Amounts, Equip Sound, Repair Item
 	
-	hallowed("armor_hallowed", 51, 1.0f, 15, new int[] {3, 6, 7, 3}, "item.armor.equip_generic", hallowed_bar);	
+	hallowed("armor_hallowed", 51, 1.0f, 15, new int[] {3, 6, 7, 3}, "item.armor.equip_generic", hallowed_ingot);	
 	
 	private static final int[] max_damage_array = new int[] {13, 15, 16, 11};
 	private String name, equipSound;
@@ -60,7 +60,7 @@ public enum ArmorMaterialLists implements IArmorMaterial {
 
 	@Override
 	public String getName() {
-		return ExampleModMain.MOD_ID + this.name;
+		return this.name;
 	}
 
 	@Override
