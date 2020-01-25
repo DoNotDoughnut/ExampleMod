@@ -3,7 +3,8 @@
         "hallowed_block_top": "examplemod:block/hallowed_ingot_block_top",
         "hallowed_block_front": "examplemod:block/hallowed_ingot_block_front",
         "hallowed_block_side": "examplemod:block/hallowed_ingot_block_side",
-        "hallowed_block_bottom": "examplemod:block/hallowed_ingot_block_bottom"
+        "hallowed_block_bottom": "examplemod:block/hallowed_ingot_block_bottom",
+        "particle": "examplemod:block/hallowed_ingot_block_top"
     },
     "display": {
         "gui": {

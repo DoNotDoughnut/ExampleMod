@@ -3,7 +3,7 @@ package com.github.donotdoughnut.examplemod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.github.donotdoughnut.examplemod.items.ExampleModItemList;
+import com.github.donotdoughnut.examplemod.lists.ExampleModItemList;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -21,7 +21,7 @@ public class ExampleModMain {
 	public static final String NAME = "Example Mod", 
 							   MOD_ID = "examplemod";
 	
-	public static final Logger logger = LogManager.getLogger(MOD_ID);
+	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 	
 	public static final ItemGroup GROUP = new ExampleModCreativeTab();
 	
@@ -33,20 +33,21 @@ public class ExampleModMain {
         MinecraftForge.EVENT_BUS.register(this);
 	}
 	
-	private void init(final FMLCommonSetupEvent event) {    	
-        logger.info(NAME+" initialized.");
+	private void init(final FMLCommonSetupEvent event) {    
+		
+        LOGGER.info(NAME+" initialized.");
     }
 
     private void clientInit(final FMLClientSetupEvent event) {
 
-    	logger.info(NAME+": Client initialized");
+    	LOGGER.info(NAME+": Client initialized");
     }
 
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event)
     {
 
-    	logger.info(NAME+" server-side initialized.");
+    	LOGGER.info(NAME+" server-side initialized.");
     }
 	
 }

@@ -4,15 +4,14 @@
 	"pattern":
 	[
 		"III",
-		"ISN",
+		"IS ",
 		" S "
 	],
 	
 	"key":
 	{
 		"I": { "tag": "forge:ingots/hallowed" },
-		"S": { "item": "minecraft:stick" },
-		"N": { "item": "minecraft:nether_star" }	
+		"S": { "item": "minecraft:iron_ingot" }
 	},
 	
 	"result": { "item": "examplemod:hallowed_pickaxe_axe" }

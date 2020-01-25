@@ -11,7 +11,7 @@
 	"key":
 	{
 		"I": { "tag": "forge:ingots/hallowed" },
-		"S": { "item": "minecraft:stick" }
+		"S": { "item": "minecraft:iron_ingot" }
 	},
 	
 	"result": { "item": "examplemod:hallowed_sword" }
