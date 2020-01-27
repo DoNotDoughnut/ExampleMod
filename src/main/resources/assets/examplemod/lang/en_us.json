@@ -1,7 +1,10 @@
 {
+
 	"item.examplemod.hallowed_ingot": "\u00A7cHallowed Bar",
+	
 	"item.examplemod.hallowed_sword": "\u00A7dExcalibur",
 	"item.examplemod.hallowed_pickaxe_axe": "\u00A7cPickaxe Axe",
+	"item.examplemod.hallowed_bow": "\u00A7dHallowed Repeater",
 	
 	"item.examplemod.hallowed_ranged_helmet": "\u00A7dHallowed Headgear",
 	"item.examplemod.hallowed_melee_helmet": "\u00A7dHallowed Mask",
@@ -12,5 +15,5 @@
 	
 	"block.examplemod.hallowed_ingot_block": "\u00A7dHallowed Metal Block",
 	
-	"itemGroup.examplemod": "Terraria"
+	"itemGroup.examplemod": "Example Mod"
 }

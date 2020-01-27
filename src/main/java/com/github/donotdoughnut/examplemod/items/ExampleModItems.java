@@ -5,6 +5,7 @@ import static com.github.donotdoughnut.examplemod.lists.ArmorMaterialTierList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModBlockList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
 
+import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedBow;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedPickaxeAxe;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedSword;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.armor.HallowedArmor;
@@ -28,8 +29,10 @@ public class ExampleModItems {
 			event.getRegistry().registerAll(
 
 					hallowed_ingot = new ExampleModItem("hallowed_ingot"),
+					
 					hallowed_sword = new HallowedSword(MaterialTierList.hallowed, 5, -2.4f, "hallowed_sword"), // Excalibur
 					hallowed_pickaxe_axe = new HallowedPickaxeAxe(MaterialTierList.hallowed, 3, -2.8f, "hallowed_pickaxe_axe"), //Pickaxe Axe
+					hallowed_bow = new HallowedBow("hallowed_bow"),
 					
 					hallowed_ingot_block_item = new ExampleModBlockItem(hallowed_block, "hallowed_ingot_block"),
 					
