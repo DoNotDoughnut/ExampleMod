@@ -15,5 +15,7 @@
 	
 	"block.examplemod.hallowed_ingot_block": "\u00A7dHallowed Metal Block",
 	
+	"curios.identifier.accessory": "Accessory Slot",
+	
 	"itemGroup.examplemod": "Example Mod"
 }

@@ -48,9 +48,9 @@ public class ExampleModMain {
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
 
-    	//InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("accessory").setSize(2).setEnabled(true));
+    	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("accessory").setSize(6).setEnabled(true));
     	
-    	LOGGER.info(NAME+": Curios initialized");
+    	LOGGER.info(NAME+": IMC initialized");
     }
 	
     private void clientInit(final FMLClientSetupEvent event) {
