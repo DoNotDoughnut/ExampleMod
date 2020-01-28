@@ -5,9 +5,6 @@ bin
 .metadata
 .classpath
 .project
-runClient.launch
-runServer.launch
-runData.launch
 
 # idea
 out
@@ -28,7 +25,3 @@ run
 forge*changelog.txt
 README.txt
 CREDITS.txt
-
-#My files
-src.zip
-extra
