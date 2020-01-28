@@ -17,9 +17,9 @@ apply plugin: 'maven-publish'
 
 
 
-version = '${modVersion}'
-group = '${modGroup}'
-archivesBaseName = '${modId}'
+version = "${modVersion}"
+group = "${modGroup}"
+archivesBaseName = "${modId}"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
@@ -60,8 +60,7 @@ dependencies {
 	
     minecraft "net.minecraftforge:forge:${minecraftVersion}-${forgeVersion}"
 
-    compileOnly fg.deobf("top.theillusivec4.curios:curios:FORGE-${minecraftVersion}-${curiosVersion}:api")
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios:FORGE-${minecraftVersion}-${curiosVersion}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios:FORGE-${minecraftVersion}-${curiosVersion}")
 
 }
 
@@ -84,7 +83,7 @@ processResources {
 
     from(sourceSets.main.resources.srcDirs) {
         include 'META-INF/mods.toml'
-        expand 'modVersion': modVersion, 'modId' : modId, 'modName': modName, 'modURL': modURL, 'modAuthors': modAuthors, 'modDescription': modDescription, 'modLogo': modLogo
+        expand 'modVersion': modVersion, 'modId' : modId, 'modName': modName, 'modURL': modURL, 'modAuthors': modAuthors, 'modDescription': modDescription, 'modLogo': modLogo, 'minecraftVersion': minecraftVersion
     }
 
     from(sourceSets.main.resources.srcDirs) {

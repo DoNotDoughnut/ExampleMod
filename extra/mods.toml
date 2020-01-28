@@ -1,7 +1,7 @@
 modLoader="javafml"
 loaderVersion="[31,)"
 issueTrackerURL="https://github.com/DoNotDoughnut/${modId}/issues"
-#logoFile="${modLogo}"
+logoFile="${modLogo}"
 
 [[mods]]
 
