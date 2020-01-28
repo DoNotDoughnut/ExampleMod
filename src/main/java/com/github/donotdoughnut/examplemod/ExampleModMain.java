@@ -18,45 +18,41 @@ import top.theillusivec4.curios.api.imc.CurioIMCMessage;
 @Mod(ExampleModMain.MOD_ID)
 public class ExampleModMain {
 
-	public static final String NAME = "Example Mod", 
-							   MOD_ID = "examplemod";
-	
+	public static final String NAME = "Example Mod", MOD_ID = "examplemod";
+
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-	
+
 	public ExampleModMain() {
-	
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::init);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientInit);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-		
-        MinecraftForge.EVENT_BUS.register(this);
+
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::init);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientInit);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+
+		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
-	private void init(final FMLCommonSetupEvent event) {    
-		
-		
-		
-        LOGGER.info(NAME+": Initialized.");
-    }
 
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
+	private void init(final FMLCommonSetupEvent event) {
 
-    	InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("accessory").setSize(6).setEnabled(true));
-    	
-    	LOGGER.info(NAME+": IMC initialized");
-    }
-	
-    private void clientInit(final FMLClientSetupEvent event) {
+		LOGGER.info(NAME + ": Initialized.");
+	}
 
-    	LOGGER.info(NAME+": Client initialized");
-    }
+	private void enqueueIMC(final InterModEnqueueEvent event) {
 
-    @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event)
-    {
+		InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE,
+				() -> new CurioIMCMessage("accessory").setSize(6).setEnabled(true));
 
-    	LOGGER.info(NAME+" server-side initialized.");
-    }
-	
+		LOGGER.info(NAME + ": IMC initialized");
+	}
+
+	private void clientInit(final FMLClientSetupEvent event) {
+
+		LOGGER.info(NAME + ": Client initialized");
+	}
+
+	@SubscribeEvent
+	public void onServerStarting(FMLServerStartingEvent event) {
+
+		LOGGER.info(NAME + " server-side initialized.");
+	}
+
 }
