@@ -135,7 +135,7 @@ public class HallowedPickaxeAxe extends ToolItem {
 	@Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
 		super.addInformation(stack, world, list, flag);
-		list.add(new StringTextComponent(TextFormatting.ITALIC + "" + TextFormatting.BLUE + "Not to be confused with a hamdrill"));
+		list.add(new StringTextComponent(TextFormatting.ITALIC + "'Not to be confused with a hamdrill'"));
 	}
 
 }

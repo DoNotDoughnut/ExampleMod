@@ -6,6 +6,8 @@ import static com.github.donotdoughnut.examplemod.lists.ArmorMaterialTierList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModBlockList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
 
+import com.github.donotdoughnut.examplemod.items.accessories.AccessoryAglet;
+import com.github.donotdoughnut.examplemod.items.accessories.AccessoryShinyRedBalloon;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedArmor;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedBow;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedPickaxeAxe;
@@ -45,8 +47,8 @@ public class ExampleModItems {
 					hallowed_leggings = new HallowedArmor(hallowed, EquipmentSlotType.LEGS, "hallowed_leggings"),
 					hallowed_boots = new HallowedArmor(hallowed, EquipmentSlotType.FEET, "hallowed_boots"),
 					
-					accessory_aglet = new ExampleModAccessory("aglet"),
-					accessory_shiny_red_balloon = new ExampleModAccessory("shiny_red_balloon")
+					accessory_aglet = new AccessoryAglet(),
+					accessory_shiny_red_balloon = new AccessoryShinyRedBalloon()
 					
 					);
 
