@@ -2,10 +2,12 @@ package com.github.donotdoughnut.examplemod.items;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModTabsList.*;
+
 import static com.github.donotdoughnut.examplemod.lists.ArmorMaterialTierList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModBlockList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
 
+import com.github.donotdoughnut.examplemod.api.item.basic.BasicModItem;
 import com.github.donotdoughnut.examplemod.items.accessories.AccessoryAglet;
 import com.github.donotdoughnut.examplemod.items.accessories.AccessoryShinyRedBalloon;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedArmor;
@@ -31,7 +33,7 @@ public class ExampleModItems {
 		public static void registerItems(RegistryEvent.Register<Item> event) {
 			event.getRegistry().registerAll(
 
-					hallowed_ingot = new ExampleModItem("hallowed_ingot"),
+					hallowed_ingot = new BasicModItem("hallowed_ingot"),
 					
 					hallowed_sword = new HallowedSword(MaterialTierList.hallowed, 5, -2.4f, "hallowed_sword"), // Excalibur
 					hallowed_pickaxe_axe = new HallowedPickaxeAxe(MaterialTierList.hallowed, 3, -2.8f, "hallowed_pickaxe_axe"), //Pickaxe Axe
@@ -64,15 +66,6 @@ class ExampleModAccessory extends Item {
 	public ExampleModAccessory(String registryName) {
 		super(new Item.Properties().group(GROUP_ACCESSORY));
 		this.setRegistryName(MOD_ID, "accessory_"+registryName);
-	}
-
-}
-
-class ExampleModItem extends Item {
-
-	public ExampleModItem(String registryName) {
-		super(new Item.Properties().group(GROUP_BASIC));
-		this.setRegistryName(MOD_ID, registryName);
 	}
 
 }
