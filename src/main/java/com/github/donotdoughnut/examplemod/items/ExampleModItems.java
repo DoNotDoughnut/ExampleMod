@@ -5,10 +5,10 @@ import static com.github.donotdoughnut.examplemod.lists.ArmorMaterialTierList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModBlockList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
 
+import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedArmor;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedBow;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedPickaxeAxe;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedSword;
-import com.github.donotdoughnut.examplemod.items.materials.hallowed.armor.HallowedArmor;
 import com.github.donotdoughnut.examplemod.lists.MaterialTierList;
 
 import net.minecraft.block.Block;
