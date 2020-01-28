@@ -2,6 +2,7 @@ package com.github.donotdoughnut.examplemod.items.materials.hallowed;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModTabsList.*;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -14,7 +15,7 @@ import net.minecraft.world.World;
 public class HallowedArmor extends ArmorItem {
 	
 	public HallowedArmor(IArmorMaterial material, EquipmentSlotType slot, String regName) {
-		super(material, slot, new Item.Properties().group(GROUP));
+		super(material, slot, new Item.Properties().group(GROUP_BASIC));
 		this.setRegistryName(MOD_ID, regName);
 	}
 

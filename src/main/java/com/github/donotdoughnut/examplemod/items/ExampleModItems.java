@@ -1,6 +1,7 @@
 package com.github.donotdoughnut.examplemod.items;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModTabsList.*;
 import static com.github.donotdoughnut.examplemod.lists.ArmorMaterialTierList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModBlockList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
@@ -42,9 +43,10 @@ public class ExampleModItems {
 					
 					hallowed_chestplate = new HallowedArmor(hallowed, EquipmentSlotType.CHEST, "hallowed_chestplate"),
 					hallowed_leggings = new HallowedArmor(hallowed, EquipmentSlotType.LEGS, "hallowed_leggings"),
-					hallowed_boots = new HallowedArmor(hallowed, EquipmentSlotType.FEET, "hallowed_boots")
+					hallowed_boots = new HallowedArmor(hallowed, EquipmentSlotType.FEET, "hallowed_boots"),
 					
-					
+					accessory_aglet = new ExampleModAccessory("aglet"),
+					accessory_shiny_red_balloon = new ExampleModAccessory("shiny_red_balloon")
 					
 					);
 
@@ -55,12 +57,19 @@ public class ExampleModItems {
 
 }
 
+class ExampleModAccessory extends Item {
 
+	public ExampleModAccessory(String registryName) {
+		super(new Item.Properties().group(GROUP_ACCESSORY));
+		this.setRegistryName(MOD_ID, "accessory_"+registryName);
+	}
+
+}
 
 class ExampleModItem extends Item {
 
 	public ExampleModItem(String registryName) {
-		super(new Item.Properties().group(GROUP));
+		super(new Item.Properties().group(GROUP_BASIC));
 		this.setRegistryName(MOD_ID, registryName);
 	}
 
@@ -69,7 +78,7 @@ class ExampleModItem extends Item {
 class ExampleModBlockItem extends BlockItem {
 
 	public ExampleModBlockItem(Block block, String registryName) {
-		super(block, new Item.Properties().group(GROUP));
+		super(block, new Item.Properties().group(GROUP_BASIC));
 		this.setRegistryName(MOD_ID, registryName);
 	}
 

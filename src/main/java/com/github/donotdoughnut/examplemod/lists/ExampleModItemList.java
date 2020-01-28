@@ -15,6 +15,8 @@ public class ExampleModItemList {
 	hallowed_leggings,
 	hallowed_boots,
 	hallowed_bow,
-	hallowed_ingot_block_item;
+	hallowed_ingot_block_item,
+	accessory_aglet,
+	accessory_shiny_red_balloon;
 	
 }

@@ -2,6 +2,7 @@ package com.github.donotdoughnut.examplemod.items.materials.hallowed;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModTabsList.*;
 
 import java.util.List;
 import java.util.Map;
@@ -69,7 +70,7 @@ public class HallowedPickaxeAxe extends ToolItem {
 			.put(Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG).build();
 
 	public HallowedPickaxeAxe(IItemTier tier, float attackDamageIn, float attackSpeedIn, String regName) {
-		super(attackDamageIn, attackSpeedIn, tier, EFFECTIVE_ON, new Item.Properties().group(GROUP));
+		super(attackDamageIn, attackSpeedIn, tier, EFFECTIVE_ON, new Item.Properties().group(GROUP_BASIC));
 		setRegistryName(MOD_ID, regName);
 	}
 

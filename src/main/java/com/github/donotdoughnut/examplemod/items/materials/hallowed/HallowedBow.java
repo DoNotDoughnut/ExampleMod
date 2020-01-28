@@ -2,6 +2,7 @@ package com.github.donotdoughnut.examplemod.items.materials.hallowed;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.hallowed_ingot;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModTabsList.*;
 
 import java.util.function.Predicate;
 
@@ -13,7 +14,7 @@ import net.minecraft.item.ItemStack;
 public class HallowedBow extends CrossbowItem {
 
 	public HallowedBow(String regName) {
-		super(new Item.Properties().group(GROUP).maxStackSize(1).group(ItemGroup.COMBAT).maxDamage(326));
+		super(new Item.Properties().group(GROUP_BASIC).maxStackSize(1).group(ItemGroup.COMBAT).maxDamage(326));
 		setRegistryName(MOD_ID, regName);
 	}
 

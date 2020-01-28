@@ -3,10 +3,6 @@ package com.github.donotdoughnut.examplemod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.github.donotdoughnut.examplemod.lists.ExampleModItemList;
-
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -26,8 +22,6 @@ public class ExampleModMain {
 							   MOD_ID = "examplemod";
 	
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-	
-	public static final ItemGroup GROUP = new ExampleModCreativeTab();
 	
 	public ExampleModMain() {
 	
@@ -65,17 +59,4 @@ public class ExampleModMain {
     	LOGGER.info(NAME+" server-side initialized.");
     }
 	
-}
-
-class ExampleModCreativeTab extends ItemGroup {
-
-	public ExampleModCreativeTab() {
-		super(ExampleModMain.MOD_ID);
-	}
-
-	@Override
-	public ItemStack createIcon() {
-		return new ItemStack(ExampleModItemList.hallowed_ingot);
-	}
-
 }
