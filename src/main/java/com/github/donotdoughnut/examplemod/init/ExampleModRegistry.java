@@ -4,6 +4,7 @@ import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.*;
 import static net.minecraft.block.SoundType.*;
 import static net.minecraft.block.material.Material.*;
+import static net.minecraft.inventory.EquipmentSlotType.*;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -16,7 +17,8 @@ import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
 import com.github.donotdoughnut.examplemod.items.accessories.*;
 import com.github.donotdoughnut.examplemod.items.materials.ExampleModMaterials.*;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedArmor;
-import com.github.donotdoughnut.examplemod.items.tools.ExampleModMultitool;
+import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedPickaxeAxe;
+import com.github.donotdoughnut.examplemod.items.tools.MultitoolItem;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -40,77 +42,74 @@ import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.capability.CuriosCapability;
 import top.theillusivec4.curios.api.capability.ICurio;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ExampleModRegistry {
+	
+	@SubscribeEvent
+	public static void registerItems(RegistryEvent.Register<Item> event) {
+		event.getRegistry().registerAll(
+				
+				/* Hallowed Bar (Item ID) */
+				hallowed_ingot = new ITEM("hallowed_ingot"),
+				
+				/* Excalibur (Item Type, Attack Damage, Attack Speed) */
+				hallowed_sword = new SWORD(hallowed, 5, -2.4f),
+				
+				/* Pickaxe Axe (Attack Damage, Attack Speed, Item ID) */
+				hallowed_pickaxe_axe = new HallowedPickaxeAxe(3, -2.8f, "pickaxe_axe"),
 
-	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-	public static class ExampleModRegister {
+				/* Hallowed Repeater (Removed) (Item Type, ..., ..., Item ID) */
+				// hallowed_bow = new CROSSBOW(ITEMTYPE.hallowed, 0, 0, "hallowed_bow"),
 
-		@SubscribeEvent
-		public static void registerItems(RegistryEvent.Register<Item> event) {
-			event.getRegistry().registerAll(
+				/* Hallowed Bar Stack (Base block) */
+				hallowed_ingot_block_item = new BLOCKITEM(hallowed_ingot_block),
 
-					/* Hallowed Bar (Item Name) */
-					hallowed_ingot = new ITEM("hallowed_ingot"),
+				/* Hallowed Helmet (Armor type, Armor slot) */
+				hallowed_ranged_helmet = new HallowedArmor(hallowed_ranged, HEAD),
 
-					/* Excalibur (Item Type, Attack Damage, Attack Speed) */
-					hallowed_sword = new SWORD(hallowed, 5, -2.4f),
+				/* Hallowed Mask (Armor type, Armor slot) */
+				hallowed_melee_helmet = new HallowedArmor(hallowed_melee, HEAD),
 
-					/* Pickaxe Axe (Item Type, Attack Damage, Attack Speed, Name, Types) */
-					hallowed_pickaxe_axe = new MULTITOOL(hallowed, 3, -2.8f, "pickaxe_axe", ToolType.PICKAXE,
-							ToolType.AXE),
+				/* Hallowed Headgear (Armor type, Armor slot) */
+				hallowed_magic_helmet = new HallowedArmor(hallowed_magic, HEAD),
 
-					/* Hallowed Repeater (Removed) */
-					// hallowed_bow = new CROSSBOW(ITEMTYPE.hallowed, 0, 0, "hallowed_bow"),
+				/* Hallowed Plate Mail (Armor type, Armor slot) */
+				hallowed_chestplate = new ARMOR(hallowed_basic, CHEST),
 
-					/* Hallowed Bar Stack (Base block) */
-					hallowed_ingot_block_item = new BLOCKITEM(hallowed_ingot_block),
+				/* Hallowed Leggings (Armor type, Armor slot) */
+				hallowed_leggings = new ARMOR(hallowed_basic, LEGS),
 
-					/* Hallowed Helmet (Armor type, Armor slot) */
-					hallowed_ranged_helmet = new HallowedArmor(hallowed_ranged, EquipmentSlotType.HEAD),
+				/* Hallowed Boots (Armor type, Armor slot) */
+				hallowed_boots = new ARMOR(hallowed_basic, FEET),
 
-					/* Hallowed Mask (Armor type, Armor slot) */
-					hallowed_melee_helmet = new HallowedArmor(hallowed_melee, EquipmentSlotType.HEAD),
+				/* Aglet () */
+				accessory_aglet = new AccessoryAglet(),
 
-					/* Hallowed Headgear (Armor type, Armor slot) */
-					hallowed_magic_helmet = new HallowedArmor(hallowed_magic, EquipmentSlotType.HEAD),
+				/* Shiny Red Balloon () */
+				accessory_shiny_red_balloon = new AccessoryShinyRedBalloon(),
+					
+				/* Obsidian Skull (Max burn time) */
+				accessory_obsidian_skull = new AccessoryObsidianSkull(2)
 
-					/* Hallowed Plate Mail (Armor type, Armor slot) */
-					hallowed_chestplate = new ARMOR(hallowed_basic, EquipmentSlotType.CHEST),
+		);
+		
+		LOGGER.info(NAME + ": Items registered.");
+		
+	}
 
-					/* Hallowed Leggings (Armor type, Armor slot) */
-					hallowed_leggings = new ARMOR(hallowed_basic, EquipmentSlotType.LEGS),
+	@SubscribeEvent
+	public static void registerBlocks(RegistryEvent.Register<Block> event) {
 
-					/* Hallowed Boots (Armor type, Armor slot) */
-					hallowed_boots = new ARMOR(hallowed_basic, EquipmentSlotType.FEET),
+		// DONT FORGET TO CREATE BLOCKITEM WHEN REGISTERING BLOCKS
 
-					/* Aglet () */
-					accessory_aglet = new AccessoryAglet(),
+		event.getRegistry().registerAll(
 
-					/* Shiny Red Balloon () */
-					accessory_shiny_red_balloon = new AccessoryShinyRedBalloon(),
+				/* Hallowed Bar Block (MaterialType, Hardness (Break Speed), Resistance (To Explosions), Light Value Emitted, Walk Sound) */
+				hallowed_ingot_block = new BLOCK(IRON, 3.0f, 3.0f, 3, METAL, "hallowed_ingot_block")
 
-					/* Obsidian Skull (Max burn time) */
-					accessory_obsidian_skull = new AccessoryObsidianSkull(2)
-
-			);
-
-			LOGGER.info(NAME + ": Items registered.");
-		}
-
-		@SubscribeEvent
-		public static void registerBlocks(RegistryEvent.Register<Block> event) {
-
-			// DONT FORGET TO CREATE BLOCKITEM WHEN REGISTERING BLOCKS
-
-			event.getRegistry().registerAll(
-
-					hallowed_ingot_block = new BLOCK(IRON, 3.0f, 3.0f, 3, METAL, "hallowed_ingot_block")
-
-			);
-
-			LOGGER.info(NAME + ": Blocks registered");
-
-		}
+		);
+		
+		LOGGER.info(NAME + ": Blocks registered");
 
 	}
 
@@ -142,7 +141,7 @@ public class ExampleModRegistry {
 
 	}
 
-	public static class MULTITOOL extends ExampleModMultitool {
+	public static class MULTITOOL extends MultitoolItem {
 
 		public MULTITOOL(ITEMTYPE tier, float attackDamageIn, float attackSpeedIn, String registryName, ToolType type1,
 				ToolType type2) {
