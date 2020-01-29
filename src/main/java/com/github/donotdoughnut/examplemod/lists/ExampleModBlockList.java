@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 
 public class ExampleModBlockList {
 
-	public static Block hallowed_ingot_block;
-	
+	public static Block 
+	hallowed_ingot_block;
+
 }

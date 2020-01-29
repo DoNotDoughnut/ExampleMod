@@ -3,7 +3,7 @@ package com.github.donotdoughnut.examplemod.lists;
 import net.minecraft.item.Item;
 
 public class ExampleModItemList {
-
+		
 	public static Item 
 	hallowed_ingot, 
 	hallowed_sword, 
@@ -18,5 +18,5 @@ public class ExampleModItemList {
 	hallowed_ingot_block_item,
 	accessory_aglet,
 	accessory_shiny_red_balloon;
-	
+
 }

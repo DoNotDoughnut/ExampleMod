@@ -1,13 +1,13 @@
 package com.github.donotdoughnut.examplemod.init;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModBlockList.*;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.*;
 import static net.minecraft.block.SoundType.*;
 import static net.minecraft.block.material.Material.*;
 import static com.github.donotdoughnut.examplemod.items.materials.ExampleModMaterials.ARMORTYPE.*;
 import static com.github.donotdoughnut.examplemod.items.materials.ExampleModMaterials.ITEMTYPE.*;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModBlockList.*;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
 
 import com.github.donotdoughnut.examplemod.items.accessories.AccessoryAglet;
 import com.github.donotdoughnut.examplemod.items.accessories.AccessoryShinyRedBalloon;
@@ -43,24 +43,24 @@ public class ExampleModRegistry {
 		public static void registerItems(RegistryEvent.Register<Item> event) {
 			event.getRegistry().registerAll(
 
-					hallowed_ingot = new ITEM("hallowed_ingot"),																// Hallowed Bar
+					hallowed_ingot = new ITEM("hallowed_ingot"),																	// Hallowed Bar
 					
-					hallowed_sword = new SWORD(hallowed, 5, -2.4f), 															// Excalibur
-					hallowed_pickaxe_axe = new MULTITOOL(hallowed, 3, -2.8f, "pickaxe_axe", ToolType.PICKAXE, ToolType.AXE),	// Pickaxe Axe
-					//hallowed_bow = new CROSSBOW(ITEMTYPE.hallowed, 0, 0, "hallowed_bow"), 									// Hallowed Repeater (Removed)
+					hallowed_sword = new SWORD(hallowed, 5, -2.4f), 																// Excalibur
+					hallowed_pickaxe_axe = new MULTITOOL(hallowed, 3, -2.8f, "pickaxe_axe", ToolType.PICKAXE, ToolType.AXE),		// Pickaxe Axe
+					//hallowed_bow = new CROSSBOW(ITEMTYPE.hallowed, 0, 0, "hallowed_bow"), 										// Hallowed Repeater (Removed)
 					
-					hallowed_ingot_block_item = new BLOCKITEM(hallowed_ingot_block),											// Hallowed Bar Stack
+					hallowed_ingot_block_item = new BLOCKITEM(hallowed_ingot_block),												// Hallowed Bar Stack
 					
-					hallowed_ranged_helmet = new HallowedArmor(hallowed_ranged, EquipmentSlotType.HEAD),						// Hallowed Helmet
-					hallowed_melee_helmet = new HallowedArmor(hallowed_melee, EquipmentSlotType.HEAD),   						// Hallowed Mask
-					hallowed_magic_helmet = new HallowedArmor(hallowed_magic, EquipmentSlotType.HEAD), 							// Hallowed Headgear
+					hallowed_ranged_helmet = new HallowedArmor(hallowed_ranged, EquipmentSlotType.HEAD),							// Hallowed Helmet
+					hallowed_melee_helmet = new HallowedArmor(hallowed_melee, EquipmentSlotType.HEAD),   							// Hallowed Mask
+					hallowed_magic_helmet = new HallowedArmor(hallowed_magic, EquipmentSlotType.HEAD), 								// Hallowed Headgear
 					
-					hallowed_chestplate = new HallowedArmor(hallowed_basic, EquipmentSlotType.CHEST),							// Hallowed Plate Mail
-					hallowed_leggings = new HallowedArmor(hallowed_basic, EquipmentSlotType.LEGS),   							// Hallowed Leggings
-					hallowed_boots = new HallowedArmor(hallowed_basic, EquipmentSlotType.FEET),									// Hallowed Boots
+					hallowed_chestplate = new ARMOR(hallowed_basic, EquipmentSlotType.CHEST),										// Hallowed Plate Mail
+					hallowed_leggings = new ARMOR(hallowed_basic, EquipmentSlotType.LEGS),   										// Hallowed Leggings
+					hallowed_boots = new ARMOR(hallowed_basic, EquipmentSlotType.FEET),												// Hallowed Boots
 					
-					accessory_aglet = new AccessoryAglet(),																		// Aglet
-					accessory_shiny_red_balloon = new AccessoryShinyRedBalloon()												// Shiny Red Balloon
+					accessory_aglet = new AccessoryAglet(),																			// Aglet
+					accessory_shiny_red_balloon = new AccessoryShinyRedBalloon()													// Shiny Red Balloon
 					
 					);
 
@@ -82,7 +82,7 @@ public class ExampleModRegistry {
 			
 		}
 		
-	}
+	}	
 	
 	public static class ITEM extends Item {
 
@@ -191,5 +191,5 @@ public class ExampleModRegistry {
 		}
 
 	}
-
+	
 }
