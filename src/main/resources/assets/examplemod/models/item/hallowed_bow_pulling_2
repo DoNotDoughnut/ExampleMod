@@ -1,6 +1,0 @@
-{
-    "parent": "examplemod:item/hallowed_bow",
-    "textures": {
-        "layer0": "examplemod:item/hallowed_bow_pulling_2"
-    }
-}

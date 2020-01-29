@@ -1,14 +1,11 @@
-package com.github.donotdoughnut.examplemod.api.tool;
-
-import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.*;
+package com.github.donotdoughnut.examplemod.items.tools;
 
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
 
+import com.github.donotdoughnut.examplemod.items.materials.ExampleModMaterials.ITEMTYPE;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.google.common.collect.Sets;
 
@@ -19,8 +16,6 @@ import net.minecraft.block.CampfireBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.ToolItem;
@@ -47,20 +42,21 @@ public class ExampleModMultitool extends ToolItem {
 			.put(Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG).put(Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD)
 			.put(Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG).build();
 
-	public ExampleModMultitool(IItemTier tier, float attackDamageIn, float attackSpeedIn, String regName, ToolType type1, ToolType type2) {
-		super(attackDamageIn, attackSpeedIn, tier, Sets.newHashSet(), new Item.Properties().group(GROUP_TOOLS).addToolType(type1, tier.getHarvestLevel()).addToolType(type2, tier.getHarvestLevel()));
-		setRegistryName(MOD_ID, regName);
+	public ExampleModMultitool(ITEMTYPE tier, float attackDamageIn, float attackSpeedIn, Properties builder, ToolType type1, ToolType type2) {
+		super(attackDamageIn, attackSpeedIn, tier, Sets.newHashSet(), builder.addToolType(type1, tier.getHarvestLevel()).addToolType(type2, tier.getHarvestLevel()));
 	}
 	
-	public ExampleModMultitool(IItemTier tier, float attackDamageIn, float attackSpeedIn, String regName, ToolType type1, ToolType type2, ToolType type3) {
-		super(attackDamageIn, attackSpeedIn, tier, Sets.newHashSet(), new Item.Properties().group(GROUP_TOOLS).addToolType(type1, tier.getHarvestLevel()).addToolType(type2, tier.getHarvestLevel()).addToolType(type3, tier.getHarvestLevel()));
-		setRegistryName(MOD_ID, regName);
+	public ExampleModMultitool(ITEMTYPE tier, float attackDamageIn, float attackSpeedIn, Properties builder, ToolType type1, ToolType type2, ToolType type3) {
+		super(attackDamageIn, attackSpeedIn, tier, Sets.newHashSet(), builder.addToolType(type1, tier.getHarvestLevel()).addToolType(type2, tier.getHarvestLevel()).addToolType(type3, tier.getHarvestLevel()));
+
 	}
 
 	public boolean canHarvestBlock(BlockState state) {
 		return getToolTypes(new ItemStack(this.getItem())).stream().anyMatch(e -> state.isToolEffective(e));
 	}
 
+	//Fix below
+	
 	@Nonnull
 	@Override
 	public ActionResultType onItemUse(ItemUseContext context) {
@@ -96,16 +92,6 @@ public class ExampleModMultitool extends ToolItem {
 		}
 
 		return ActionResultType.SUCCESS;
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
-		return true;
-	}
-
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return repair.getItem() == hallowed_ingot;
 	}
 
 	@Override

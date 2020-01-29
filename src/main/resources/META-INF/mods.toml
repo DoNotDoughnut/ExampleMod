@@ -1,31 +1,31 @@
 modLoader="javafml"
 loaderVersion="[31,)"
-issueTrackerURL="https://github.com/DoNotDoughnut/${modId}/issues"
-logoFile="${modLogo}"
+issueTrackerURL="https://github.com/DoNotDoughnut/ExampleMod/issues"
+logoFile="mod_icon.png"
 
 [[mods]]
 
-	modId="${modId}"
-	version="${modVersion}"
-	displayName="${modName}"
-	displayURL="${modURL}"
-	authors="${modAuthors}"
+	modId="examplemod"
+	version="${file.jarVersion}"
+	displayName="Example Mod"
+	displayURL="https://holloway.jumpingcrab.com"
+	authors="Rhys Holloway, Luke Putzeys, Kevin Justin"
 	
 description='''
-${modDescription}
+Terraria-based items
 '''
 
 [[dependencies.examplemod]]
     modId="curios"
     mandatory=true
-    versionRange="[FORGE-${minecraftVersion}-2.0,)"
+    versionRange="[FORGE-${minecraftVersion}-2.0-beta2,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.examplemod]]
     modId="forge"
     mandatory=true
-    versionRange="[31,)"
+    versionRange="[${forgeMainVer},)"
     ordering="NONE"
     side="BOTH"
 

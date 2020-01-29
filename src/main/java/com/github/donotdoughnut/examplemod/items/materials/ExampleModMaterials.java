@@ -1,4 +1,4 @@
-package com.github.donotdoughnut.examplemod.lists;
+package com.github.donotdoughnut.examplemod.items.materials;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
@@ -77,7 +77,7 @@ public class ExampleModMaterials {
 		
 		// Type, Name, Durability (Is scaled later), Toughness, Enchantability, Damage Reduction Amounts, Equip Sound, Repair Item
 		
-		hallowed_basic("hallowed", "basic", 51, 1.0f, 15, new int[] {3, 6, 7, 3}, "item.armor.equip_generic", hallowed_ingot),
+		hallowed_basic("hallowed", 51, 1.0f, 15, new int[] {3, 6, 7, 3}, "item.armor.equip_generic", hallowed_ingot),
 		
 		hallowed_melee(hallowed_basic.getType(), "melee", 64, 1.0f, 15, new int[] {3, 6, 7, 3}, "item.armor.equip_generic", hallowed_ingot),
 		hallowed_magic(hallowed_basic.getType(), "magic", 20, 1.0f, 15, new int[] {3, 6, 7, 3}, "item.armor.equip_generic", hallowed_ingot),
@@ -86,16 +86,26 @@ public class ExampleModMaterials {
 		
 		
 		private static final int[] max_damage_array = new int[] {13, 15, 16, 11};
-		private String name, equipSound;
+		private String name, equipSound, type;
 		private int durability, enchantability;
 		private Item repairItem;
 		private int[] damageReductionAmounts;
 		private float toughness;
-		private final String type;
 		
 		private ARMORTYPE(String type, String name, int durability, float toughness, int enchantability, int[] damageReductionAmounts, String equipSound, Item repairItem) {
 			this.type = type;
 			this.name = name;
+			this.equipSound = equipSound;
+			this.durability = durability;
+			this.enchantability = enchantability;
+			this.repairItem = repairItem;
+			this.damageReductionAmounts = damageReductionAmounts;
+			this.toughness = toughness;
+		}
+		
+		private ARMORTYPE(String type, int durability, float toughness, int enchantability, int[] damageReductionAmounts, String equipSound, Item repairItem) {
+			this.type = type;
+			this.name = "";
 			this.equipSound = equipSound;
 			this.durability = durability;
 			this.enchantability = enchantability;
@@ -131,7 +141,10 @@ public class ExampleModMaterials {
 
 		@Override
 		public String getName() {
-			return MOD_ID + ":armor_" + this.type + "_" + this.name;
+			if(this.name.equals(""))
+				return MOD_ID + ":" + this.type + "_armor";
+			else
+				return MOD_ID + ":" + this.type + "_" + this.name + "_armor";
 		}
 
 		@Override
@@ -141,6 +154,10 @@ public class ExampleModMaterials {
 		
 		public String getType() {
 			return type;
+		}
+		
+		public String getVariant() {
+			return name;
 		}
 
 	}

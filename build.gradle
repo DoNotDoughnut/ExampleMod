@@ -58,7 +58,7 @@ repositories {
 
 dependencies {
 	
-    minecraft "net.minecraftforge:forge:${minecraftVersion}-${forgeVersion}"
+    minecraft "net.minecraftforge:forge:${minecraftVersion}-${forgeMainVer}.${forgeSubVer}"
 
     compileOnly fg.deobf("top.theillusivec4.curios:curios:FORGE-${minecraftVersion}-${curiosVersion}")
 
@@ -83,7 +83,9 @@ processResources {
 
     from(sourceSets.main.resources.srcDirs) {
         include 'META-INF/mods.toml'
-        expand 'modVersion': modVersion, 'modId' : modId, 'modName': modName, 'modURL': modURL, 'modAuthors': modAuthors, 'modDescription': modDescription, 'modLogo': modLogo, 'minecraftVersion': minecraftVersion
+        expand 
+        'minecraftVersion': minecraftVersion,
+        'forgeMainVer': forgeMainVer
     }
 
     from(sourceSets.main.resources.srcDirs) {
