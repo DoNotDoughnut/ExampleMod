@@ -4,6 +4,10 @@ import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.*;
 import static net.minecraft.block.SoundType.*;
 import static net.minecraft.block.material.Material.*;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import static com.github.donotdoughnut.examplemod.items.materials.ExampleModMaterials.ARMORTYPE.*;
 import static com.github.donotdoughnut.examplemod.items.materials.ExampleModMaterials.ITEMTYPE.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModBlockList.*;
@@ -25,13 +29,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.ToolType;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import top.theillusivec4.curios.api.capability.CuriosCapability;
 import top.theillusivec4.curios.api.capability.ICurio;
-import top.theillusivec4.curios.common.capability.CapCurioItem;
 
 public class ExampleModRegistry {
 
@@ -213,12 +220,28 @@ public class ExampleModRegistry {
 
 		@Override
 		public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT unused) {
-			return CapCurioItem.createProvider(this);
+			return new Provider(this);
 		}
 
 		@Override
 		public boolean canRightClickEquip() {
 			return true;
+		}
+		
+		private static class Provider implements ICapabilityProvider {
+
+			 final LazyOptional<ICurio> capability;
+			
+			 public Provider(ICurio curio) {
+				 this.capability = LazyOptional.of(() -> curio);
+			 }
+			 
+			 @Nonnull
+			 @Override
+			 public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
+				 return CuriosCapability.ITEM.orEmpty(cap, capability);
+			 }
+			
 		}
 
 	}
