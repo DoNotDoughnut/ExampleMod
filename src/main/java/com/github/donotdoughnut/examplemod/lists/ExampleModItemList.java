@@ -17,6 +17,7 @@ public class ExampleModItemList {
 	hallowed_bow,
 	hallowed_ingot_block_item,
 	accessory_aglet,
-	accessory_shiny_red_balloon;
+	accessory_shiny_red_balloon,
+	accessory_obsidian_skull;
 
 }

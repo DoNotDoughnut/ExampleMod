@@ -8,11 +8,12 @@ import net.minecraft.item.ItemStack;
 
 public class ExampleModTabs {
 
-	public static final ItemGroup GROUP_BASIC = new ExampleModBasicTab(),
-			GROUP_TOOLS = new ExampleModToolsTab(),
-			GROUP_WEAPONS = new ExampleModWeaponsTab(),
-			GROUP_ARMOR = new ExampleModArmorTab(),
-			GROUP_ACCESSORIES = new ExampleModAccessoriesTab();
+	public static final ItemGroup 
+	GROUP_BASIC = new ExampleModBasicTab(),
+	GROUP_TOOLS = new ExampleModToolsTab(),
+	GROUP_WEAPONS = new ExampleModWeaponsTab(),
+	GROUP_ARMOR = new ExampleModArmorTab(),
+	GROUP_ACCESSORIES = new ExampleModAccessoriesTab();
 
 }
 

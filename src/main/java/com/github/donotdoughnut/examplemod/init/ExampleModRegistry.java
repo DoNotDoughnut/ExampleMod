@@ -9,8 +9,7 @@ import static com.github.donotdoughnut.examplemod.items.materials.ExampleModMate
 import static com.github.donotdoughnut.examplemod.lists.ExampleModBlockList.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
 
-import com.github.donotdoughnut.examplemod.items.accessories.AccessoryAglet;
-import com.github.donotdoughnut.examplemod.items.accessories.AccessoryShinyRedBalloon;
+import com.github.donotdoughnut.examplemod.items.accessories.*;
 import com.github.donotdoughnut.examplemod.items.materials.ExampleModMaterials.*;
 import com.github.donotdoughnut.examplemod.items.materials.hallowed.HallowedArmor;
 import com.github.donotdoughnut.examplemod.items.tools.ExampleModMultitool;
@@ -60,7 +59,8 @@ public class ExampleModRegistry {
 					hallowed_boots = new ARMOR(hallowed_basic, EquipmentSlotType.FEET),												// Hallowed Boots
 					
 					accessory_aglet = new AccessoryAglet(),																			// Aglet
-					accessory_shiny_red_balloon = new AccessoryShinyRedBalloon()													// Shiny Red Balloon
+					accessory_shiny_red_balloon = new AccessoryShinyRedBalloon(),													// Shiny Red Balloon
+					accessory_obsidian_skull = new AccessoryObsidianSkull(2)
 					
 					);
 
@@ -189,6 +189,11 @@ public class ExampleModRegistry {
 		public ICapabilityProvider initCapabilities(ItemStack stack, CompoundNBT unused) {
 			return CapCurioItem.createProvider(this);
 		}
+		
+		@Override
+		public boolean canRightClickEquip() {
+		    return true;
+		  }
 
 	}
 	
