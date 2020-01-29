@@ -60,7 +60,7 @@ dependencies {
 	
     minecraft "net.minecraftforge:forge:${minecraftVersion}-${forgeMainVer}.${forgeSubVer}"
 
-    compileOnly fg.deobf("top.theillusivec4.curios:curios:FORGE-${minecraftVersion}-${curiosVersion}")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios:FORGE-${minecraftVersion}-2.0-beta2")
 
 }
 
@@ -77,20 +77,6 @@ jar {
         ])
     }
     
-}
-
-processResources {
-
-    from(sourceSets.main.resources.srcDirs) {
-        include 'META-INF/mods.toml'
-        expand 
-        'minecraftVersion': minecraftVersion,
-        'forgeMainVer': forgeMainVer
-    }
-
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'META-INF/mods.toml'
-    }
 }
 
 def reobfFile = file("$buildDir/reobfJar/output.jar")

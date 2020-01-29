@@ -18,14 +18,14 @@ Terraria-based items
 [[dependencies.examplemod]]
     modId="curios"
     mandatory=true
-    versionRange="[FORGE-${minecraftVersion}-2.0-beta2,)"
+    versionRange="[FORGE-1.15.2-2.0-beta2,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.examplemod]]
     modId="forge"
     mandatory=true
-    versionRange="[${forgeMainVer},)"
+    versionRange="[31,)"
     ordering="NONE"
     side="BOTH"
 
