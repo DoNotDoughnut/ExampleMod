@@ -18,7 +18,7 @@ ${modDescription}
 [[dependencies.examplemod]]
     modId="curios"
     mandatory=true
-    versionRange="[FORGE-${minecraftVersion}-)"
+    versionRange="[FORGE-${minecraftVersion}-2.0,)"
     ordering="NONE"
     side="BOTH"
 

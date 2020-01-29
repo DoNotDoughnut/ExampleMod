@@ -1,8 +1,7 @@
 package com.github.donotdoughnut.examplemod.items.materials.hallowed;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.hallowed_ingot;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModTabsList.*;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.*;
 
 import java.util.function.Predicate;
 
@@ -16,16 +15,6 @@ public class HallowedBow extends CrossbowItem {
 	public HallowedBow(String regName) {
 		super(new Item.Properties().group(GROUP_BASIC).maxStackSize(1).group(ItemGroup.COMBAT).maxDamage(326));
 		setRegistryName(MOD_ID, regName);
-	}
-
-	@Override
-	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
-		return true;
-	}
-
-	@Override
-	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		return repair.getItem() == hallowed_ingot;
 	}
 
 	public Predicate<ItemStack> getAmmoPredicate() {

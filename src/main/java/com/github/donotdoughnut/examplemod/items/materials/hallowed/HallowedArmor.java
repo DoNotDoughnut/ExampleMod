@@ -2,20 +2,20 @@ package com.github.donotdoughnut.examplemod.items.materials.hallowed;
 
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
 
-import com.github.donotdoughnut.examplemod.api.armor.basic.BasicModArmorItem;
+import com.github.donotdoughnut.examplemod.api.registry.ExampleModRegistry;
+import com.github.donotdoughnut.examplemod.lists.ExampleModMaterials.ARMORTYPE;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.world.World;
 
-public class HallowedArmor extends BasicModArmorItem {
+public class HallowedArmor extends ExampleModRegistry.ARMOR {
 	
-	public HallowedArmor(IArmorMaterial material, EquipmentSlotType slot, String regName) {
-		super(material, slot, hallowed_ingot, regName);
+	public HallowedArmor(ARMORTYPE material, EquipmentSlotType slot, String regName) {
+		super(material, slot, regName);
 	}
 	
 	public void onArmorTick(final ItemStack stack, final World world, final PlayerEntity player)
