@@ -1,4 +1,4 @@
-package com.github.donotdoughnut.examplemod.items.materials;
+package com.github.donotdoughnut.examplemod.api.items.types;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
 import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;

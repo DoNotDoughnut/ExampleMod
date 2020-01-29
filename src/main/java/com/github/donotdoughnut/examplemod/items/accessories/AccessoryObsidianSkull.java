@@ -1,10 +1,8 @@
 package com.github.donotdoughnut.examplemod.items.accessories;
 
-import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
+import static com.github.donotdoughnut.examplemod.ExampleModMain.LOGGER;
 
 import java.util.List;
-
-import com.github.donotdoughnut.examplemod.init.ExampleModRegistry.ACCESSORY;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
@@ -14,7 +12,7 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class AccessoryObsidianSkull extends ACCESSORY {
+public class AccessoryObsidianSkull extends com.github.donotdoughnut.examplemod.api.ExampleModRegistries.ACCESSORY {
 	
 	private int lastFireTimer = 0;
 

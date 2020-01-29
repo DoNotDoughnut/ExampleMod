@@ -1,7 +1,11 @@
 package com.github.donotdoughnut.examplemod.lists;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.MOD_ID;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.*;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.accessory_aglet;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.hallowed_chestplate;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.hallowed_ingot;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.hallowed_pickaxe_axe;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModItemList.hallowed_sword;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;

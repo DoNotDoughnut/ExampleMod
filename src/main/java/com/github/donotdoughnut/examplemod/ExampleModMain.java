@@ -25,8 +25,10 @@ public class ExampleModMain {
 	public ExampleModMain() {
 
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::init);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientInit);
+		
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+		
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientInit);
 
 		MinecraftForge.EVENT_BUS.register(this);
 	}

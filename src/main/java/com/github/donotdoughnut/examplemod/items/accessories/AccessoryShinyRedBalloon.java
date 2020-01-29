@@ -2,8 +2,6 @@ package com.github.donotdoughnut.examplemod.items.accessories;
 
 import java.util.List;
 
-import com.github.donotdoughnut.examplemod.init.ExampleModRegistry.ACCESSORY;
-
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -14,7 +12,7 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class AccessoryShinyRedBalloon extends ACCESSORY {
+public class AccessoryShinyRedBalloon extends com.github.donotdoughnut.examplemod.api.ExampleModRegistries.ACCESSORY {
 
 	public AccessoryShinyRedBalloon() {
 		super("shiny_red_balloon");
