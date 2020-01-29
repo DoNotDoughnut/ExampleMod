@@ -1,39 +1,32 @@
-modLoader="javafml" #mandatory
+modLoader="javafml"
+loaderVersion="[31,)"
+issueTrackerURL="https://github.com/DoNotDoughnut/${modId}/issues"
+logoFile="${modLogo}"
 
-loaderVersion="[31,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+[[mods]]
 
-issueTrackerURL="http://github.com/DoNotDoughnut/ExampleMod" #optional
-
-[[mods]] #mandatory
-
-modId="examplemod" #mandatory
-
-version="INDEV-2" #mandatory
- 
-displayName="Example Mod" #mandatory
-
-displayURL="https://holloway.jumpingcrab.com/" #optional
-
-logoFile="mod_icon.png"
-
-#credits="" #optional
-
-authors="Rhys Holloway, Luke Putzeys" #optional
-
+	modId="${modId}"
+	version="${modVersion}"
+	displayName="${modName}"
+	displayURL="${modURL}"
+	authors="${modAuthors}"
+	
 description='''
-Terraria-based items
+${modDescription}
 '''
 
 [[dependencies.examplemod]]
-    
-    modId="forge" #mandatory
-    
-    mandatory=true #mandatory
-    
-    versionRange="[31,)" #mandatory
-    
+    modId="curios"
+    mandatory=true
+    versionRange="[FORGE-${minecraftVersion}-)"
     ordering="NONE"
-    
+    side="BOTH"
+
+[[dependencies.examplemod]]
+    modId="forge"
+    mandatory=true
+    versionRange="[31,)"
+    ordering="NONE"
     side="BOTH"
 
 [[dependencies.examplemod]]
@@ -42,3 +35,4 @@ Terraria-based items
     versionRange="[1.15.2]"
     ordering="NONE"
     side="BOTH"
+
