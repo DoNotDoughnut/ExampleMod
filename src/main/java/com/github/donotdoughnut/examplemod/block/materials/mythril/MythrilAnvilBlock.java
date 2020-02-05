@@ -1,10 +1,12 @@
 package com.github.donotdoughnut.examplemod.block.materials.mythril;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.github.donotdoughnut.examplemod.lib.ExampleModRegistry.BLOCK;
 import com.github.donotdoughnut.examplemod.lists.ExampleModBlockList;
 import com.github.donotdoughnut.examplemod.lists.ExampleModContainerTypeList;
+import com.github.donotdoughnut.examplemod.lists.ExampleModItemList;
 import com.github.donotdoughnut.examplemod.lists.ExampleModTileEntityTypeList;
 
 import net.minecraft.block.Block;
@@ -34,9 +36,12 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
@@ -87,6 +92,8 @@ public class MythrilAnvilBlock extends BLOCK {
 	}
 
 	public static class MythrilAnvilTile extends TileEntity implements INamedContainerProvider {
+		
+		private LazyOptional<IItemHandler> handler = LazyOptional.of(this::createHandler);
 
 		public MythrilAnvilTile() {
 			super(ExampleModTileEntityTypeList.MYTHRIL_ANVIL_TILE);
@@ -97,6 +104,39 @@ public class MythrilAnvilBlock extends BLOCK {
 		public Container createMenu(int windowId, PlayerInventory playerInventory, PlayerEntity player) {
 			return new MythrilAnvilContainer(windowId, world, pos, playerInventory, player);
 		}
+		
+	    @Nonnull
+	    @Override
+	    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
+	        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+	            return handler.cast();
+	        }
+	        return super.getCapability(cap, side);
+	    }
+		
+	    private IItemHandler createHandler() {
+	        return new ItemStackHandler(1) {
+
+	            @Override
+	            protected void onContentsChanged(int slot) {
+	                markDirty();
+	            }
+
+	            @Override
+	            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+	                return stack.getItem() == ExampleModItemList.hallowed_ingot;
+	            }
+
+	            @Nonnull
+	            @Override
+	            public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+	                if (stack.getItem() != ExampleModItemList.hallowed_ingot) {
+	                    return stack;
+	                }
+	                return super.insertItem(slot, stack, simulate);
+	            }
+	        };
+	    }
 
 		@Override
 		public ITextComponent getDisplayName() {
