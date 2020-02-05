@@ -1,23 +1,26 @@
-package com.github.donotdoughnut.examplemod.api;
+package com.github.donotdoughnut.examplemod.lib;
 
-import static com.github.donotdoughnut.examplemod.ExampleModMain.MOD_ID;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.GROUP_ACCESSORIES;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.GROUP_ARMOR;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.GROUP_BASIC;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.GROUP_TOOLS;
-import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.GROUP_WEAPONS;
+import static com.github.donotdoughnut.examplemod.ExampleModMain.*;
+import static com.github.donotdoughnut.examplemod.lists.ExampleModTabs.*;
+
+import java.lang.reflect.Field;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.github.donotdoughnut.examplemod.api.items.MultitoolItem;
-import com.github.donotdoughnut.examplemod.api.items.types.ExampleModMaterials.ARMORTYPE;
-import com.github.donotdoughnut.examplemod.api.items.types.ExampleModMaterials.ITEMTYPE;
+import com.github.donotdoughnut.examplemod.lib.items.MultitoolItem;
+import com.github.donotdoughnut.examplemod.lib.items.types.ExampleModMaterials.ARMORTYPE;
+import com.github.donotdoughnut.examplemod.lib.items.types.ExampleModMaterials.ITEMTYPE;
+import com.github.donotdoughnut.examplemod.lists.ExampleModBlockList;
+import com.github.donotdoughnut.examplemod.lists.ExampleModContainerTypeList;
+import com.github.donotdoughnut.examplemod.lists.ExampleModItemList;
+import com.github.donotdoughnut.examplemod.lists.ExampleModTileEntityTypeList;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BlockItem;
@@ -27,17 +30,83 @@ import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import top.theillusivec4.curios.api.capability.CuriosCapability;
 import top.theillusivec4.curios.api.capability.ICurio;
 
-public class ExampleModRegistries {
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+public class ExampleModRegistry {
+	
+	@SubscribeEvent
+	public static void registerItems(RegistryEvent.Register<Item> event) {
 
+		for (Field itemField : ExampleModItemList.class.getDeclaredFields()) {
+			try {
+				event.getRegistry().register((Item) itemField.get(itemField.getName()));
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				LOGGER.error("Item field " + itemField.getName() + " could not be used!");
+				e.printStackTrace();
+			}
+		}
+		
+		LOGGER.info(NAME + ": Items registered");
 
+	}
+
+	@SubscribeEvent
+	public static void registerBlocks(RegistryEvent.Register<Block> event) {
+
+		for (Field blockField : ExampleModBlockList.class.getDeclaredFields()) {
+			try {
+				event.getRegistry().register((Block) blockField.get(blockField.getName()));
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				LOGGER.error("Block field " + blockField.getName() + " could not be used!");
+				e.printStackTrace();
+			}
+		}
+
+		LOGGER.info(NAME + ": Blocks registered");
+
+	}
+
+	@SubscribeEvent
+	public static void registerTileEntities(RegistryEvent.Register<TileEntityType<?>> event) {
+		
+		for (Field tileEntityTypeField : ExampleModTileEntityTypeList.class.getDeclaredFields()) {
+			try {
+				event.getRegistry().register((TileEntityType<?>) tileEntityTypeField.get(tileEntityTypeField.getName()));
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				LOGGER.error("TileEntityType field " + tileEntityTypeField.getName() + " could not be used!");
+				e.printStackTrace();
+			}
+		}
+
+		LOGGER.info(NAME + ": Tile entity types registered");
+	}
+	
+	@SubscribeEvent
+	public static void registerContainers(RegistryEvent.Register<ContainerType<?>> event) {
+		
+		for (Field containerTypeField : ExampleModContainerTypeList.class.getDeclaredFields()) {
+			try {
+				event.getRegistry().register((ContainerType<?>) containerTypeField.get(containerTypeField.getName()));
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				LOGGER.error("ContainerType field " + containerTypeField.getName() + " could not be used!");
+				e.printStackTrace();
+			}
+		}
+
+		LOGGER.info(NAME + ": Container types registered");
+	}
+	
 	public static class ITEM extends Item {
 
 		public ITEM(String regName) {
@@ -49,14 +118,13 @@ public class ExampleModRegistries {
 
 	public static class BLOCK extends Block {
 
-		public BLOCK(Material mat, float hardness, float resisitance, int lightValue, SoundType walkSound,
-				String registryName) {
+		public BLOCK(Material mat, float hardness, float resisitance, int lightValue, SoundType walkSound, final String registryName) {
 			super(Block.Properties.create(mat).hardnessAndResistance(3.0f, 3.0f).lightValue(1).sound(walkSound));
 			this.setRegistryName(MOD_ID, registryName);
 		}
 
 	}
-
+	
 	public static class BLOCKITEM extends BlockItem {
 
 		public BLOCKITEM(Block block) {
@@ -68,14 +136,12 @@ public class ExampleModRegistries {
 
 	public static class MULTITOOL extends MultitoolItem {
 
-		public MULTITOOL(ITEMTYPE tier, float attackDamageIn, float attackSpeedIn, String registryName, ToolType type1,
-				ToolType type2) {
+		public MULTITOOL(ITEMTYPE tier, float attackDamageIn, float attackSpeedIn, String registryName, ToolType type1, ToolType type2) {
 			super(tier, attackDamageIn, attackSpeedIn, new Item.Properties().group(GROUP_TOOLS), type1, type2);
 			this.setRegistryName(MOD_ID, tier.getType() + "_multitool_" + registryName);
 		}
 
-		public MULTITOOL(ITEMTYPE tier, float attackDamageIn, float attackSpeedIn, String registryName, ToolType type1,
-				ToolType type2, ToolType type3) {
+		public MULTITOOL(ITEMTYPE tier, float attackDamageIn, float attackSpeedIn, String registryName, ToolType type1, ToolType type2, ToolType type3) {
 			super(tier, attackDamageIn, attackSpeedIn, new Item.Properties().group(GROUP_TOOLS), type1, type2, type3);
 			this.setRegistryName(MOD_ID, tier.getType() + "_multitool_" + registryName);
 		}
@@ -90,7 +156,7 @@ public class ExampleModRegistries {
 		}
 
 	}
-	
+
 	public static class AXE extends AxeItem {
 
 		public AXE(ITEMTYPE tier, int attackDamageIn, float attackSpeedIn) {
@@ -99,7 +165,7 @@ public class ExampleModRegistries {
 		}
 
 	}
-	
+
 	public static class SHOVEL extends ShovelItem {
 
 		public SHOVEL(ITEMTYPE tier, int attackDamageIn, float attackSpeedIn) {
@@ -169,24 +235,23 @@ public class ExampleModRegistries {
 		public boolean canRightClickEquip() {
 			return true;
 		}
-		
+
 		private static class Provider implements ICapabilityProvider {
 
-			 final LazyOptional<ICurio> capability;
-			
-			 public Provider(ICurio curio) {
-				 this.capability = LazyOptional.of(() -> curio);
-			 }
-			 
-			 @Nonnull
-			 @Override
-			 public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-				 return CuriosCapability.ITEM.orEmpty(cap, capability);
-			 }
-			
+			final LazyOptional<ICurio> capability;
+
+			public Provider(ICurio curio) {
+				this.capability = LazyOptional.of(() -> curio);
+			}
+
+			@Nonnull
+			@Override
+			public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
+				return CuriosCapability.ITEM.orEmpty(cap, capability);
+			}
+
 		}
 
 	}
 
-	
 }

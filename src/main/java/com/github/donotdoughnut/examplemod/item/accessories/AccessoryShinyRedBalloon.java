@@ -1,4 +1,4 @@
-package com.github.donotdoughnut.examplemod.items.accessories;
+package com.github.donotdoughnut.examplemod.item.accessories;
 
 import java.util.List;
 
@@ -12,22 +12,24 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class AccessoryAglet extends com.github.donotdoughnut.examplemod.api.ExampleModRegistries.ACCESSORY {
+public class AccessoryShinyRedBalloon extends com.github.donotdoughnut.examplemod.lib.ExampleModRegistry.ACCESSORY {
 
-	public AccessoryAglet() {
-		super("aglet");
+	public AccessoryShinyRedBalloon(String registryName) {
+		super(registryName);
 	}
 
 	@Override
 	public void onCurioTick(String identifier, int index, LivingEntity livingEntity) {
-		if (!livingEntity.getEntityWorld().isRemote && livingEntity.ticksExisted % 40 == 0)
-			livingEntity.addPotionEffect(new EffectInstance(Effects.SPEED, 80, 0, true, false));
+
+		if (!livingEntity.getEntityWorld().isRemote && livingEntity.ticksExisted % 80 == 0)
+			livingEntity.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 90, 1, true, false));
+
 	}
-	
+
 	@Override
 	public void addInformation(ItemStack stack, World world, List<ITextComponent> list, ITooltipFlag flag) {
 		super.addInformation(stack, world, list, flag);
-		list.add(new StringTextComponent(TextFormatting.ITALIC + "Increased movement speed"));
+		list.add(new StringTextComponent(TextFormatting.ITALIC + "Increases jump height"));
 	}
 
 }

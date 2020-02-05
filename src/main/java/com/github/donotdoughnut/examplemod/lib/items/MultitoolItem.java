@@ -1,10 +1,10 @@
-package com.github.donotdoughnut.examplemod.api.items;
+package com.github.donotdoughnut.examplemod.lib.items;
 
 import java.util.Map;
 
 import javax.annotation.Nonnull;
 
-import com.github.donotdoughnut.examplemod.api.items.types.ExampleModMaterials.ITEMTYPE;
+import com.github.donotdoughnut.examplemod.lib.items.types.ExampleModMaterials.ITEMTYPE;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.google.common.collect.Maps;

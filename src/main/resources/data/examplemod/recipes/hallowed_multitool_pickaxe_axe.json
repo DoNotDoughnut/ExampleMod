@@ -14,5 +14,5 @@
 		"S": { "item": "minecraft:iron_ingot" }
 	},
 	
-	"result": { "item": "examplemod:hallowed_pickaxe_axe" }
+	"result": { "item": "examplemod:hallowed_multitool_pickaxe_axe" }
 }

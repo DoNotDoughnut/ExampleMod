@@ -1,6 +1,6 @@
-package com.github.donotdoughnut.examplemod.items.materials.hallowed;
+package com.github.donotdoughnut.examplemod.item.materials.hallowed;
 
-import static com.github.donotdoughnut.examplemod.api.items.types.ExampleModMaterials.ITEMTYPE.*;
+import static com.github.donotdoughnut.examplemod.lib.items.types.ExampleModMaterials.ITEMTYPE.*;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
-public class HallowedPickaxeAxe extends com.github.donotdoughnut.examplemod.api.ExampleModRegistries.MULTITOOL {
+public class HallowedPickaxeAxe extends com.github.donotdoughnut.examplemod.lib.ExampleModRegistry.MULTITOOL {
 	
 	
 

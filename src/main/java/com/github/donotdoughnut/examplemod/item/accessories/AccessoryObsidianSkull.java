@@ -1,4 +1,4 @@
-package com.github.donotdoughnut.examplemod.items.accessories;
+package com.github.donotdoughnut.examplemod.item.accessories;
 
 import static com.github.donotdoughnut.examplemod.ExampleModMain.LOGGER;
 
@@ -12,14 +12,14 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class AccessoryObsidianSkull extends com.github.donotdoughnut.examplemod.api.ExampleModRegistries.ACCESSORY {
+public class AccessoryObsidianSkull extends com.github.donotdoughnut.examplemod.lib.ExampleModRegistry.ACCESSORY {
 	
 	private int lastFireTimer = 0;
 
 	private final int maxTime;
 	
-	public AccessoryObsidianSkull(double seconds) {
-		super("obsidian_skull");
+	public AccessoryObsidianSkull(double seconds, String registryName) {
+		super(registryName);
 		this.maxTime = (int) (20 * seconds);
 	}
 

@@ -1,8 +1,9 @@
 {
 
-	"item.examplemod.hallowed_ingot": "\u00A7cHallowed Bar",
-	
 	"block.examplemod.hallowed_ingot_block": "\u00A7dHallowed Bar Stack",
+	"block.examplemod.mythril_anvil": "\u00A76Mythril Anvil",
+
+	"item.examplemod.hallowed_ingot": "\u00A7cHallowed Bar",
 	
 	"item.examplemod.hallowed_sword": "\u00A7dExcalibur",
 	"item.examplemod.hallowed_multitool_pickaxe_axe": "\u00A7cPickaxe Axe",

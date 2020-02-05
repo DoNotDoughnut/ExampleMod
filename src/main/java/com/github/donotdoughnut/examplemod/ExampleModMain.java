@@ -3,8 +3,13 @@ package com.github.donotdoughnut.examplemod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.github.donotdoughnut.examplemod.proxy.ClientProxy;
+import com.github.donotdoughnut.examplemod.proxy.IProxy;
+import com.github.donotdoughnut.examplemod.proxy.ServerProxy;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -22,15 +27,16 @@ public class ExampleModMain {
 
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
+	public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
+
 	public ExampleModMain() {
 
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::init);
-		
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-		
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientInit);
 
 		MinecraftForge.EVENT_BUS.register(this);
+
 	}
 
 	private void init(final FMLCommonSetupEvent event) {
@@ -40,8 +46,7 @@ public class ExampleModMain {
 
 	private void enqueueIMC(final InterModEnqueueEvent event) {
 
-		InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE,
-				() -> new CurioIMCMessage("accessory").setSize(6).setEnabled(true));
+		InterModComms.sendTo("curios", CuriosAPI.IMC.REGISTER_TYPE, () -> new CurioIMCMessage("accessory").setSize(6).setEnabled(true));
 
 		LOGGER.info(NAME + ": IMC initialized");
 	}
