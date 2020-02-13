@@ -12,7 +12,6 @@ import com.github.donotdoughnut.examplemod.lib.items.MultitoolItem;
 import com.github.donotdoughnut.examplemod.lib.items.types.ExampleModMaterials.ARMORTYPE;
 import com.github.donotdoughnut.examplemod.lib.items.types.ExampleModMaterials.ITEMTYPE;
 import com.github.donotdoughnut.examplemod.lists.ExampleModBlockList;
-import com.github.donotdoughnut.examplemod.lists.ExampleModContainerTypeList;
 import com.github.donotdoughnut.examplemod.lists.ExampleModItemList;
 import com.github.donotdoughnut.examplemod.lists.ExampleModTileEntityTypeList;
 
@@ -20,7 +19,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BlockItem;
@@ -92,6 +90,8 @@ public class ExampleModRegistry {
 		LOGGER.info(NAME + ": Tile entity types registered");
 	}
 	
+	/*
+	
 	@SubscribeEvent
 	public static void registerContainers(RegistryEvent.Register<ContainerType<?>> event) {
 		
@@ -106,6 +106,8 @@ public class ExampleModRegistry {
 
 		LOGGER.info(NAME + ": Container types registered");
 	}
+	
+	*/
 	
 	public static class ITEM extends Item {
 

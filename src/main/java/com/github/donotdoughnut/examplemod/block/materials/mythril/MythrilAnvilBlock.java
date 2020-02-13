@@ -153,6 +153,7 @@ public class MythrilAnvilBlock extends BLOCK {
 
 		public MythrilAnvilContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
 			super(ExampleModContainerTypeList.MYTHRIL_ANVIL_CONTAINER_TYPE, windowId);
+			
 			this.tileEntity = world.getTileEntity(pos);
 			this.player = player;
 			this.playerInventory = new InvWrapper(playerInventory);
